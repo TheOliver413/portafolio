@@ -112,11 +112,11 @@
             color: #fff;
             display: block;
             border-right: 4px solid;
-            width: 18ch;
+            width: 17ch;
             font-weight: 600;
             white-space: nowrap;
 
-            animation: tipado 4s steps(18) alternate infinite;
+            animation: tipado 4s steps(17) alternate infinite;
             overflow: hidden;
         }
 
@@ -710,6 +710,10 @@
             #inicio .contenido .presentacion h2 {
                 font-size: 40px;
             }
+
+            #inicio .contenido .presentacion h2 .escritura {
+                font-size: 40px !important;
+            }    
 
             /* seccion SOBRE MI */
             #sobremi {
