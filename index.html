@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="estilo.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <script type="text/javascript">
+        emailjs.init('jOIyZeKrA3LUrNRa_')
+    </script>
+    <title>OB Full Stack Developer</title>
+</head>
+
+<body>
+    <!-- SECCION I N I C I O -->
+    <section id="inicio">
+        <div class="contenido">
+            <header>
+                <div class="contenido-header">
+                    <h1>/OB/</h1>
+                    <nav id="nav" class="">
+                        <ul id="links">
+                            <li><a href="#inicio" class="seleccionado" onclick="seleccionar(this)">INICIO</a></li>
+                            <li><a href="#sobremi" onclick="seleccionar(this)">SOBRE MI</a></li>
+                            <li><a href="#skills" onclick="seleccionar(this)">SKILLS</a></li>
+                            <!-- <li><a href="#servicios" onclick="seleccionar(this)">SERVICIOS</a></li> -->
+                            <li><a href="#portfolio" onclick="seleccionar(this)">PORTAFOLIO</a></li>
+                            <li><a href="#contacto" onclick="seleccionar(this)">CONTACTO</a></li>
+                        </ul>
+                    </nav>
+
+                    <!-- Icono del menu responsive -->
+                    <div id="icono-nav" onclick="responsiveMenu()">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                    <div class="redes">
+                        <a href="https://www.linkedin.com/in/oliver-sebastian-borda-mahecha-5a6649161/">
+                            <i class="fa-brands fa-linkedin-in" target="_blank"></i></a>
+                        <a href="https://github.com/TheOliver413" target="_blank"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.instagram.com/theoliver413/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+            </header>
+            <div class="presentacion">
+                <p class="bienvenida">Bienvenidos</p>
+                <h2>Soy <span>Oliver Borda</span>, <span class="escritura">Full Stack Developer</span></h2>
+                <p class="descripcion">| HTML | CSS | Javascript | React | Redux | Node.js | Express | Postgres |
+                    Sequelize | Boostrap |</p>
+                <a href="#contacto">Contactame</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCION S O B R E M I -->
+    <section id="sobremi">
+        <div class="contenedor-foto">
+            <img src="img/Foto.jpg" alt="">
+        </div>
+        <div class="sobremi">
+            <p class="titulo-seccion">Sobre Mi</p>
+            <h2>Hola, Soy <span>Oliver Borda</span> </h2>
+            <h3>Full Stack Developer</h3>
+            <p>
+                Soy una persona emprendedora, activa, con actitud de iniciativa,
+                trabajo en equipo con capacidad para adaptarme a situaciones
+                nuevas, en busca siempre del cumplimiento de metas y objetivos,
+                con capacidad de organización y trabajar bajo presión.
+            </p>
+
+            <ul>
+                <li>🌐Soy egresado del Bootcamp HENRY.</li>
+                <li>🌐Tecnólogo en ADSI (Análisis y Desarrollo de Sistemas de Información).</li>
+                <li>🌐Técnico de Desarrollo y Programación de Software.</li>
+            </ul>
+
+            <p>Objetivo Laboral:</p>
+            <p>
+                Formar parte de un equipo de trabajo en el cual pueda aportar mis conocimientos en las diferentes áreas
+                y
+                me permitan crecer profesionalmente.
+            </p>
+
+            <a href="https://drive.google.com/file/d/1NkK_Qyt9dP-f4Y8PRVNjAdBwMMaieygp/view?usp=share_link" target="_blank">Descargar CV</a>
+        </div>
+    </section>
+
+    <!-- SECCION S E R V I C I O S -->
+    <!-- <section id="servicios">
+        <h3 class="titulo-seccion">MIS SERVICIOS</h3>
+        <div class="fila">
+            <div class="servicio">
+                <span class="icono"> <i class="fa-solid fa-code"></i></span>
+                <h4>Diseño de Sitios Web</h4>
+                <hr>
+                <ul class="servicios-tag">
+                    <li>Web</li>
+                    <li>Graphic</li>
+                    <li>SEO</li>
+                </ul>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit voluptatibus rem illum sunt,
+                    asperiores!</p>
+            </div>
+            <div class="servicio">
+                <span class="icono"><i class="fa-solid fa-file-code"></i></span>
+                <h4>Porgramación PHP</h4>
+                <hr>
+                <ul class="servicios-tag">
+                    <li>Web</li>
+                    <li>Graphic</li>
+                    <li>SEO</li>
+                </ul>
+                <p>I have been providing web design services with great success for 9 years. The client is very happy
+                </p>
+            </div>
+            <div class="servicio">
+                <span class="icono"><i class="fa-solid fa-arrow-trend-up"></i></span>
+                <h4>Posicionamiento SEO</h4>
+                <hr>
+                <ul class="servicios-tag">
+                    <li>Web</li>
+                    <li>Graphic</li>
+                    <li>SEO</li>
+                </ul>
+                <p>I have been providing web design services with great success for 9 years. The client is very happy
+                </p>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- SECCION H A B I L I D A D E S -->
+    <section id="skills">
+        <div class="contenedor-skills" id="skills">
+            <div class="skills-section">
+                <div class="skills-header">
+                    <h1>Skills</h1>
+                </div>
+                <div class="skills-container">
+    
+                    <div class="skills-box">
+                        <div class="skills-title">
+                            <div class="skills-img">
+                                <img src="assets/icons8-html-5-480.svg" alt="HTML icon" class="skills-icons">
+                            </div>
+                            <h3>HTML 5</h3>
+                        </div>
+                    </div>
+    
+    
+                    <div class="skills-box">
+                        <div class="skills-title">
+                            <div class="skills-img">
+                                <img src="assets/icons8-css3-480.svg" alt="CSS icon" class="skills-icons">
+                            </div>
+                            <h3>CSS3</h3>
+                        </div>
+                    </div>
+    
+                    <div class="skills-box">
+                        <div class="skills-title">
+                            <div class="skills-img">
+                                <img src="assets/icons8-bootstrap-480.svg" alt="Boostrap icon" class="skills-icons">
+                            </div>
+                            <h3>BOOSTRAP</h3>
+                        </div>
+                    </div>
+    
+    
+                    <div class="skills-box">
+                        <div class="skills-title">
+                            <div class="skills-img">
+                                <img src="assets/icons8-javascript-480.svg" alt="Javascript icon" class="skills-icons">
+                            </div>
+                            <h3>JAVASCRIPT</h3>
+                        </div>
+                    </div>
+    
+                    <div class="skills-box">
+                        <div class="skills-title">
+                            <div class="skills-img">
+                                <img src="assets/icons8-react-native-480.svg" alt="React icon" class="skills-icons">
+                            </div>
+                            <h3>REACT</h3>
+                        </div>
+                    </div>
+    
+                    <div class="skills-box">
+                        <div class="skills-title">
+                            <div class="skills-img">
+                                <img src="assets/icons8-redux-480.svg" alt="Redux icon" class="skills-icons">
+                            </div>
+                            <h3>REDUX</h3>
+                        </div>
+                    </div>
+    
+                    <div class="skills-box">
+                        <div class="skills-title">
+                            <div class="skills-img">
+                                <img src="assets/icons8-nodejs-480.svg" alt="Node icon" class="skills-icons">
+                            </div>
+                            <h3>NODE.JS</h3>
+                        </div>
+                    </div>
+    
+                    <div class="skills-box">
+                        <div class="skills-title">
+                            <div class="skills-img">
+                                <img src="assets/icons8-express-js.svg" alt="Node icon" class="skills-icons">
+                            </div>
+                            <h3>EXPRESS.JS</h3>
+                        </div>
+                    </div>
+    
+                    <div class="skills-box">
+                        <div class="skills-title">
+                            <div class="skills-img">
+                                <img src="assets/icons8-postgresql-480.svg" alt="Postgres icon" class="skills-icons">
+                            </div>
+                            <h3>POSTGRES</h3>
+                        </div>
+                    </div>
+    
+                    <div class="skills-box">
+                        <div class="skills-title">
+                            <div class="skills-img">
+                                <img src="assets/sequelizejs-icon.svg" alt="Postgres icon" class="skills-icons">
+                            </div>
+                            <h3>SEQUELIZE</h3>
+                        </div>
+                    </div>
+    
+                    <div class="skills-box">
+                        <div class="skills-title">
+                            <div class="skills-img">
+                                <img src="assets/icons8-mysql-logo.svg" alt="MYSQL icon" class="skills-icons">
+                            </div>
+                            <h3>MYSQL</h3>
+                        </div>
+                    </div>
+    
+                    <div class="skills-box">
+                        <div class="skills-title">
+                            <div class="skills-img">
+                                <img src="assets/icons8-git.svg" alt="MYSQL icon" class="skills-icons">
+                            </div>
+                            <h3>GIT</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>   
+
+    <!-- SECCION PORTAFOLIO -->
+    <section id="portfolio">
+        <h3 class="titulo-seccion">Mis Proyectos</h3>
+        <div class="fila">
+            <div class="proyecto">
+                <div class="overlay"></div>
+                <img src="img/proyecto2.png" alt="">
+                <div class="info">
+                    <h4>Wiki Games</h4>
+                    <p>Es una Single Page Aplication desarrollada para el Proyecto Individual del Bootcamp de Henry.</p>
+                    <div class="botones">
+                        <a href="https://wiki-game-front.vercel.app" target="_blank" class="button"><i
+                                class="fa-regular fa-eye"></i> Demo</a>
+                        <a href="https://github.com/TheOliver413/WikiGame-Front.git" target="_blank" class="button"><i
+                                class="fa-brands fa-github"></i>Repo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="proyecto">
+                <div class="overlay"></div>
+                <img src="img/proyecto3.png" alt="">
+                <div class="info">
+                    <h4>Mundo Pokemon</h4>
+                    <p>Es una Single Page Aplication desarrollada para el Proyecto Individual del Bootcamp de Henry.</p>
+                    <div class="botones">
+                        <a href="https://client-kohl.vercel.app" target="_blank" class="button"><i
+                                class="fa-regular fa-eye"></i> Demo</a>
+                        <a href="https://github.com/TheOliver413/Mundo-Pokemon-Front.git" target="_blank"
+                            class="button"><i class="fa-brands fa-github"></i>Repo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="proyecto">
+                <div class="overlay"></div>
+                <img src="img/proyecto4.png" alt="">
+                <div class="info">
+                    <h4>PI Food</h4>
+                    <p>Es una Single Page Aplication desarrollada para el Proyecto Individual del Bootcamp de Henry.</p>
+                    <div class="botones">
+                        <a href="https://pi-food-murex.vercel.app" target="_blank" class="button"><i
+                                class="fa-regular fa-eye"></i> Demo</a>
+                        <a href="https://github.com/TheOliver413/CLIENT_FOOD" target="_blank" class="button"><i
+                                class="fa-brands fa-github"></i>Repo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fila">
+            <div class="proyecto">
+                <div class="overlay"></div>
+                <img src="img/proyecto1.png" alt="">
+                <div class="info">
+                    <h4>World Developers - Work & Relax</h4>
+                    <p>Es una aplicacion realizada para el proyecto final del bootcamp de Henry.</p>
+                    <div class="botones">
+                        <a href="https://world-dev-front.vercel.app" target="_blank" class="button"><i
+                                class="fa-regular fa-eye"></i> Demo</a>
+                        <a href="https://github.com/TheOliver413/WorldDev-Front.git" target="_blank" class="button"><i
+                                class="fa-brands fa-github"></i>Repo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCTION C O N T A C T O -->
+    <section id="contacto">
+        <h3 class="titulo-seccion">Contactanos ahora</h3>
+        <div class="contenedor-form">
+            <form id="form">
+                <div class="fila mitad">
+                    <input type="text" name="from_name" id="from_name" placeholder="Nombre Completo *" class="input-mitad">
+                    <input type="email" name="email" id="email" placeholder="Dirección de Email" class="input-mitad">
+                </div>
+                <div class="fila">
+                    <input type="text"  name="subject" id="subject" placeholder="Tema..." class="input-full">
+                </div>
+                <div class="fila">
+                    <textarea name="message" id="message" cols="30" rows="10" placeholder="Tu Mensaje..."
+                        class="input-full"></textarea>
+                </div>
+
+                <input type="submit" id="button" value="Enviar Mensaje" class="btn-enviar">
+            </form>
+        </div>
+    </section>
+
+    <!-- SECCION FOOTER -->
+    <footer>
+
+        <h1 class="titulo-seccion">OLIVER BORDA</h1>
+        <ul id="links">
+            <li><a href="#inicio" class="seleccionado" onclick="seleccionar(this)">INICIO</a></li>
+            <li><a href="#sobremi" onclick="seleccionar(this)">SOBRE MI</a></li>
+            <li><a href="#servicios" onclick="seleccionar(this)">SERVICIOS</a></li>
+            <li><a href="#portfolio" onclick="seleccionar(this)">PORTAFOLIO</a></li>
+            <li><a href="#contacto" onclick="seleccionar(this)">CONTACTO</a></li>
+        </ul>
+
+        <div class="redes">
+            <a href="https://www.linkedin.com/in/oliver-sebastian-borda-mahecha-5a6649161/">
+                <i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/TheOliver413"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.instagram.com/theoliver413/"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+        <p>Copyright © | Developed with <i class="fa-regular fa-heart"></i> by <span>Oliver Borda</span></p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
