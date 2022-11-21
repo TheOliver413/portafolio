@@ -464,7 +464,7 @@
         /* *********************/
 
         #portfolio {
-            max-width: 1100px;
+            max-width: 1500px;
             padding: 100px 0;
             margin: auto;
         }
@@ -486,7 +486,7 @@
         }
 
         #portfolio .fila .proyecto {
-            max-width: 450px;
+            max-width: 500px;
             color: #fff;
             border: 1px solid #000;
             margin: 0 10px;
