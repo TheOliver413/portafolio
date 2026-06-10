@@ -2,182 +2,203 @@
 
 import { useEffect, useRef, useState } from "react";
 
+/* --- data --- */
 type Skill = {
   name: string;
-  level: number;
   category: "frontend" | "backend" | "database" | "tools";
-  color: "cyan" | "purple";
+  size: "sm" | "md" | "lg";
+  icon?: string;
 };
 
 const skills: Skill[] = [
-  // Frontend
-  { name: "HTML5", level: 95, category: "frontend", color: "cyan" },
-  { name: "CSS3", level: 90, category: "frontend", color: "cyan" },
-  { name: "JavaScript", level: 88, category: "frontend", color: "cyan" },
-  { name: "React", level: 90, category: "frontend", color: "cyan" },
-  { name: "Redux", level: 80, category: "frontend", color: "cyan" },
-  { name: "Bootstrap", level: 85, category: "frontend", color: "cyan" },
-  // Backend
-  { name: "Node.js", level: 82, category: "backend", color: "purple" },
-  { name: "Express.js", level: 80, category: "backend", color: "purple" },
-  { name: "Sequelize", level: 75, category: "backend", color: "purple" },
-  // Database
-  { name: "PostgreSQL", level: 78, category: "database", color: "purple" },
-  { name: "MySQL", level: 75, category: "database", color: "purple" },
-  // Tools
-  { name: "Git", level: 85, category: "tools", color: "cyan" },
-  { name: "GitHub", level: 85, category: "tools", color: "cyan" },
-  { name: "Scrum", level: 80, category: "tools", color: "cyan" },
+  /* frontend */
+  { name: "React",       category: "frontend",  size: "lg",  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+  { name: "JavaScript",  category: "frontend",  size: "lg",  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+  { name: "TypeScript",  category: "frontend",  size: "md",  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+  { name: "HTML5",       category: "frontend",  size: "md",  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+  { name: "CSS3",        category: "frontend",  size: "md",  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+  { name: "Redux",       category: "frontend",  size: "sm",  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" },
+  { name: "Next.js",     category: "frontend",  size: "md",  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+  { name: "Bootstrap",   category: "frontend",  size: "sm",  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" },
+  { name: "Tailwind",    category: "frontend",  size: "sm",  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" },
+  /* backend */
+  { name: "Node.js",     category: "backend",   size: "lg",  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+  { name: "Express.js",  category: "backend",   size: "md",  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
+  { name: "REST APIs",   category: "backend",   size: "md" },
+  { name: "Sequelize",   category: "backend",   size: "sm",  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original.svg" },
+  /* database */
+  { name: "PostgreSQL",  category: "database",  size: "lg",  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+  { name: "MySQL",       category: "database",  size: "md",  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+  { name: "MongoDB",     category: "database",  size: "sm",  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+  /* tools */
+  { name: "Git",         category: "tools",     size: "lg",  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+  { name: "GitHub",      category: "tools",     size: "md",  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+  { name: "Scrum",       category: "tools",     size: "sm" },
+  { name: "Figma",       category: "tools",     size: "sm",  icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
 ];
 
 const categories = [
-  { id: "all", label: "Todo" },
+  { id: "all",      label: "Todo" },
   { id: "frontend", label: "Frontend" },
-  { id: "backend", label: "Backend" },
+  { id: "backend",  label: "Backend" },
   { id: "database", label: "Base de Datos" },
-  { id: "tools", label: "Herramientas" },
+  { id: "tools",    label: "Herramientas" },
 ];
 
-const techIcons: Record<string, string> = {
-  HTML5: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-  CSS3: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-  JavaScript: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-  React: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-  Redux: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
-  Bootstrap: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
-  "Node.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-  "Express.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-  Sequelize: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original.svg",
-  PostgreSQL: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
-  MySQL: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
-  Git: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-  GitHub: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
-  Scrum: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg",
+const sizeClass: Record<Skill["size"], string> = {
+  sm: "",
+  md: "lg",
+  lg: "xl",
 };
 
-function SkillCard({ skill, index, sectionVisible }: { skill: Skill; index: number; sectionVisible: boolean }) {
-  const [animated, setAnimated] = useState(false);
-
-  useEffect(() => {
-    if (sectionVisible && !animated) {
-      const t = setTimeout(() => setAnimated(true), index * 60);
-      return () => clearTimeout(t);
-    }
-  }, [sectionVisible, index, animated]);
-
-  const colorClass = skill.color === "cyan"
-    ? "border-cyan/20 hover:border-cyan/40 bg-cyan/5"
-    : "border-purple/20 hover:border-purple/40 bg-purple/5";
-
-  const barColor = skill.color === "cyan" ? "bg-cyan" : "bg-purple";
-  const glowColor = skill.color === "cyan" ? "shadow-cyan/20" : "shadow-purple/20";
-
-  return (
-    <div
-      className={`group relative p-5 rounded-2xl border backdrop-blur-sm transition-all duration-500 cursor-default
-                  ${colorClass} hover:shadow-lg ${glowColor} ${
-        animated ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-      }`}
-      style={{ transitionDelay: `${index * 60}ms` }}
-    >
-      <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center">
-          <img
-            src={techIcons[skill.name]}
-            alt={skill.name}
-            className="w-8 h-8 object-contain"
-            loading="lazy"
-          />
-        </div>
-        <div className="flex-1 min-w-0">
-          <p className="font-bold text-foreground text-sm truncate">{skill.name}</p>
-          <p className="text-muted text-xs font-mono">{skill.level}%</p>
-        </div>
-      </div>
-
-      {/* Progress bar */}
-      <div className="h-1.5 bg-white/5 rounded-full overflow-hidden" role="progressbar" aria-valuenow={skill.level} aria-valuemin={0} aria-valuemax={100} aria-label={`${skill.name}: ${skill.level}%`}>
-        <div
-          className={`h-full rounded-full transition-all duration-1000 ease-out ${barColor}`}
-          style={{ width: animated ? `${skill.level}%` : "0%" }}
-        />
-      </div>
-    </div>
-  );
-}
-
 export default function Skills() {
-  const [activeCategory, setActiveCategory] = useState("all");
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const ref     = useRef<HTMLDivElement>(null);
+  const [visible, setVisible]  = useState(false);
+  const [active,  setActive]   = useState("all");
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0, rootMargin: "0px 0px -50px 0px" }
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold: 0.1 }
     );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
   }, []);
 
-  const filtered = activeCategory === "all"
+  const filtered = active === "all"
     ? skills
-    : skills.filter((s) => s.category === activeCategory);
+    : skills.filter((s) => s.category === active);
 
   return (
-    <section id="skills" className="relative py-32 overflow-hidden" aria-label="Habilidades tecnicas">
-      {/* Ambient */}
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan/5 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+    <section id="skills" className="relative py-36 overflow-hidden" aria-label="Habilidades tecnicas">
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-cyan/5 blur-3xl pointer-events-none" aria-hidden="true" />
 
       <div
         ref={ref}
-        className={`max-w-6xl mx-auto px-6 transition-all duration-1000 ${
-          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-        }`}
+        className={`max-w-7xl mx-auto px-6 transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
-        {/* Header */}
-        <div className="text-center mb-14">
-          <span className="font-mono text-xs tracking-widest uppercase text-cyan">// habilidades</span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-4">
-            Mi{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-purple">
-              Stack Tecnologico
-            </span>
-          </h2>
-          <p className="text-muted text-lg max-w-xl mx-auto">
-            Herramientas y tecnologias que uso para dar vida a los proyectos
-          </p>
+        {/* section label */}
+        <div className="flex items-center gap-4 mb-20">
+          <span className="font-mono text-xs tracking-widest uppercase text-cyan">// 02 — habilidades</span>
+          <div className="flex-1 h-px bg-border" aria-hidden="true" />
         </div>
 
-        {/* Category filter */}
-        <div className="flex flex-wrap gap-2 justify-center mb-10" role="tablist" aria-label="Filtrar habilidades por categoria">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              role="tab"
-              aria-selected={activeCategory === cat.id}
-              className={`px-5 py-2 rounded-full font-mono text-xs tracking-wide uppercase transition-all duration-300
-                ${activeCategory === cat.id
-                  ? "bg-cyan text-[#080b12] font-bold"
-                  : "border border-border text-muted hover:text-foreground hover:border-cyan/30"
-                }`}
-            >
-              {cat.label}
-            </button>
-          ))}
+        {/* header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+          <div>
+            <h2 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight">
+              Mi{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-purple">
+                Stack Tecnologico
+              </span>
+            </h2>
+            <p className="text-muted-light text-lg mt-3 max-w-md">
+              Herramientas y tecnologias que uso para dar vida a los proyectos.
+            </p>
+          </div>
+
+          {/* filter pills */}
+          <div className="flex flex-wrap gap-2" role="tablist" aria-label="Filtrar habilidades">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                role="tab"
+                aria-selected={active === cat.id}
+                onClick={() => setActive(cat.id)}
+                className={`px-5 py-2 rounded-full font-mono text-xs tracking-widest uppercase transition-all duration-300
+                  ${active === cat.id
+                    ? "bg-cyan text-background font-bold glow-cyan"
+                    : "border border-border text-muted hover:text-foreground hover:border-border-hover"
+                  }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Skills grid */}
+        {/* ---- tag cloud — size variant layout ---- */}
         <div
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+          className="flex flex-wrap gap-3 items-center"
           role="tabpanel"
+          aria-label={`Habilidades: ${active}`}
         >
-          {filtered.map((skill, i) => (
-            <SkillCard key={skill.name} skill={skill} index={i} sectionVisible={visible} />
+          {filtered.map((skill, i) => {
+            const cls = sizeClass[skill.size];
+            return (
+              <div
+                key={skill.name}
+                className={`skill-tag ${cls}`}
+                style={{ animationDelay: `${i * 40}ms` }}
+                data-hover
+              >
+                {skill.icon && (
+                  <img
+                    src={skill.icon}
+                    alt=""
+                    aria-hidden="true"
+                    className="w-4 h-4 object-contain flex-shrink-0"
+                    loading="lazy"
+                    onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+                  />
+                )}
+                {skill.name}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* ---- horizontal progress bars for "featured" skills ---- */}
+        <div className="mt-20 grid md:grid-cols-2 gap-x-16 gap-y-8">
+          {[
+            { name: "React / Next.js",    level: 90, color: "cyan"   },
+            { name: "Node.js / Express",  level: 82, color: "purple" },
+            { name: "JavaScript / TS",    level: 88, color: "cyan"   },
+            { name: "PostgreSQL / MySQL", level: 78, color: "purple" },
+          ].map((s) => (
+            <BarSkill key={s.name} name={s.name} level={s.level} color={s.color as "cyan" | "purple"} />
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function BarSkill({ name, level, color }: { name: string; level: number; color: "cyan" | "purple" }) {
+  const ref      = useRef<HTMLDivElement>(null);
+  const [vis, setVis] = useState(false);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVis(true); obs.disconnect(); } },
+      { threshold: 0.5 }
+    );
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+
+  const barBg   = color === "cyan" ? "bg-cyan" : "bg-purple";
+  const textCol = color === "cyan" ? "text-cyan" : "text-purple";
+
+  return (
+    <div ref={ref}>
+      <div className="flex items-center justify-between mb-2">
+        <span className="font-display font-semibold text-foreground text-sm">{name}</span>
+        <span className={`font-mono text-xs ${textCol}`}>{level}%</span>
+      </div>
+      <div
+        className="h-1 bg-surface-3 rounded-full overflow-hidden"
+        role="progressbar"
+        aria-valuenow={level}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label={`${name}: ${level}%`}
+      >
+        <div
+          className={`h-full rounded-full transition-all duration-1000 ease-out ${barBg}`}
+          style={{ width: vis ? `${level}%` : "0%" }}
+        />
+      </div>
+    </div>
   );
 }

@@ -1,30 +1,28 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { GraduationCap, Code2, Target, Download } from "lucide-react";
+import { GraduationCap, Code2, Target, Download, ArrowUpRight } from "lucide-react";
 
-const highlights = [
+const timeline = [
   {
-    icon: <GraduationCap className="w-5 h-5" />,
-    text: "Egresado del Bootcamp Henry",
+    Icon: GraduationCap,
+    year: "2022",
+    title: "Bootcamp Henry",
+    desc: "Full Stack Web Development — 800h de practica intensiva.",
   },
   {
-    icon: <Code2 className="w-5 h-5" />,
-    text: "Tecnologo en ADSI — Analisis y Desarrollo de Sistemas",
+    Icon: Code2,
+    year: "2021",
+    title: "Tecnologo ADSI",
+    desc: "Analisis y Desarrollo de Sistemas de Informacion — SENA.",
   },
   {
-    icon: <Target className="w-5 h-5" />,
-    text: "Tecnico en Desarrollo y Programacion de Software",
+    Icon: Target,
+    year: "2020",
+    title: "Tecnico en Programacion",
+    desc: "Desarrollo y Programacion de Software — SENA.",
   },
 ];
-
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="font-mono text-xs tracking-widest uppercase text-cyan">
-      {children}
-    </span>
-  );
-}
 
 export default function About() {
   const ref = useRef<HTMLDivElement>(null);
@@ -32,100 +30,128 @@ export default function About() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0, rootMargin: "0px 0px -50px 0px" }
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold: 0.1 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section id="sobremi" className="relative py-32 overflow-hidden" aria-label="Sobre mi">
-      {/* Ambient */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-purple/5 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+    <section id="sobremi" className="relative py-36 overflow-hidden" aria-label="Sobre mi">
+      {/* ambient */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-purple/6 blur-3xl pointer-events-none" aria-hidden="true" />
 
       <div
         ref={ref}
-        className={`max-w-6xl mx-auto px-6 transition-all duration-1000 ${
-          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-        }`}
+        className={`max-w-7xl mx-auto px-6 transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
-        <div className="flex flex-col lg:flex-row gap-16 items-center">
+        {/* section label */}
+        <div className="flex items-center gap-4 mb-20">
+          <span className="font-mono text-xs tracking-widest uppercase text-cyan">// 01 — sobre mi</span>
+          <div className="flex-1 h-px bg-border" aria-hidden="true" />
+        </div>
 
-          {/* Image side */}
-          <div className="relative flex-shrink-0" aria-hidden="true">
-            <div className="relative w-72 h-80 lg:w-80 lg:h-96">
-              {/* Frame decoration */}
-              <div className="absolute -inset-3 border border-cyan/15 rounded-2xl" />
-              <div className="absolute -inset-6 border border-purple/10 rounded-3xl" />
+        {/* asymmetric split */}
+        <div className="grid lg:grid-cols-12 gap-16 items-start">
 
-              {/* Image */}
-              <div className="relative w-full h-full rounded-2xl overflow-hidden border border-border glow-purple">
+          {/* LEFT — image */}
+          <div className="lg:col-span-4 relative" aria-hidden="true">
+            <div className="relative">
+              <div className="absolute -top-5 -left-5 w-full h-full border border-cyan/10 rounded-2xl" />
+              <div className="absolute -top-2 -left-2 w-full h-full border border-purple/10 rounded-2xl" />
+
+              <div className="relative rounded-2xl overflow-hidden border border-border aspect-[3/4] glow-purple">
                 <img
                   src="/foto.jpeg"
-                  alt="Oliver Borda"
+                  alt="Oliver Borda, Full Stack Developer"
                   className="w-full h-full object-cover object-center"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = "/Foto.jpg";
-                  }}
+                  onError={(e) => { (e.target as HTMLImageElement).src = "/Foto.jpg"; }}
                 />
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-purple/30 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+                  <p className="font-mono text-xs text-cyan tracking-widest uppercase">Full Stack Developer</p>
+                  <p className="font-display font-bold text-foreground text-lg">Oliver Borda</p>
+                </div>
               </div>
+            </div>
 
-              {/* Corner accent */}
-              <div className="absolute -bottom-4 -right-4 w-20 h-20 border-r-2 border-b-2 border-cyan/40 rounded-br-2xl" />
-              <div className="absolute -top-4 -left-4 w-20 h-20 border-l-2 border-t-2 border-purple/40 rounded-tl-2xl" />
+            {/* availability chip */}
+            <div className="mt-6 flex items-center gap-2 px-4 py-3 rounded-xl border border-border bg-surface-2">
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="animate-ping absolute h-full w-full rounded-full bg-cyan opacity-60" />
+                <span className="relative h-2 w-2 rounded-full bg-cyan" />
+              </span>
+              <span className="font-mono text-xs text-muted-light tracking-wide">Disponible — Colombia</span>
             </div>
           </div>
 
-          {/* Content side */}
-          <div className="flex-1">
-            <SectionLabel>// sobre mi</SectionLabel>
-            <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-6">
-              Construyo experiencias
-              <br />
+          {/* RIGHT — content */}
+          <div className="lg:col-span-8">
+            <h2 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight mb-8 text-balance">
+              Construyo experiencias{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-purple">
                 digitales que importan
               </span>
             </h2>
 
-            <p className="text-muted leading-relaxed text-lg mb-6">
-              Soy un desarrollador emprendedor y activo, con iniciativa propia y
-              fuerte vocacion de trabajo en equipo. Me adapto rapidamente a nuevos
-              desafios y entornos, siempre orientado al cumplimiento de metas y
-              con capacidad para trabajar bajo presion.
-            </p>
+            <div className="space-y-5 text-muted-light leading-relaxed text-lg mb-12">
+              <p>
+                Soy un desarrollador emprendedor y proactivo, con fuerte vocacion de trabajo en equipo.
+                Me adapto rapidamente a nuevos desafios, siempre orientado al cumplimiento de metas con
+                capacidad para trabajar bajo presion.
+              </p>
+              <p>
+                Mi objetivo es integrar equipos donde pueda aportar mis conocimientos en las distintas
+                areas del desarrollo y seguir creciendo profesionalmente. Creo en el codigo limpio,
+                en la experiencia de usuario y en soluciones que resuelven problemas reales.
+              </p>
+            </div>
 
-            <p className="text-muted leading-relaxed mb-8">
-              Mi objetivo es integrar equipos donde pueda aportar mis conocimientos
-              en las distintas areas del desarrollo y seguir creciendo
-              profesionalmente. Creo en el codigo limpio, en la experiencia de
-              usuario y en soluciones que resuelven problemas reales.
-            </p>
-
-            {/* Education highlights */}
-            <ul className="space-y-4 mb-10" aria-label="Formacion academica">
-              {highlights.map((item, i) => (
-                <li key={i} className="flex items-start gap-4 group">
-                  <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-xl bg-cyan/10 border border-cyan/20 text-cyan group-hover:bg-cyan/15 transition-colors">
-                    {item.icon}
+            {/* timeline */}
+            <div className="space-y-0 mb-12">
+              {timeline.map((item, i) => (
+                <div key={i} className="flex gap-5 group">
+                  <div className="flex flex-col items-center">
+                    <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-xl bg-cyan/10 border border-cyan/20 text-cyan group-hover:bg-cyan/15 transition-colors">
+                      <item.Icon className="w-4 h-4" />
+                    </div>
+                    {i < timeline.length - 1 && (
+                      <div className="w-px flex-1 bg-border my-2" aria-hidden="true" />
+                    )}
                   </div>
-                  <span className="text-foreground/80 leading-relaxed pt-2">{item.text}</span>
-                </li>
+                  <div style={{ paddingBottom: i < timeline.length - 1 ? "1.5rem" : 0 }}>
+                    <span className="font-mono text-xs text-muted tracking-widest">{item.year}</span>
+                    <h3 className="font-display font-bold text-foreground text-base mt-0.5">{item.title}</h3>
+                    <p className="text-muted text-sm leading-relaxed mt-1">{item.desc}</p>
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
 
-            <a
-              href="https://drive.google.com/file/d/1RNqrU0st0f11TyUHL5du0KuXJQ5rzynE/view?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-6 py-3 rounded-xl border border-cyan/30 text-cyan font-medium
-                         hover:bg-cyan/10 hover:border-cyan/50 transition-all duration-300 group"
-            >
-              <Download className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
-              Descargar CV
-            </a>
+            {/* actions */}
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="https://drive.google.com/file/d/1RNqrU0st0f11TyUHL5du0KuXJQ5rzynE/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-6 py-3 rounded-xl border border-cyan/30 text-cyan font-medium
+                           hover:bg-cyan/10 hover:border-cyan/50 transition-all duration-300 group"
+              >
+                <Download className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
+                Descargar CV
+              </a>
+              <a
+                href="https://github.com/TheOliver413"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-6 py-3 rounded-xl border border-border text-muted
+                           hover:border-border-hover hover:text-foreground transition-all duration-300 group"
+              >
+                Ver GitHub
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
