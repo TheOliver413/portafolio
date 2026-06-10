@@ -1,22 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState, FormEvent } from "react";
-import { Mail, MapPin, Send, Github, Linkedin, CheckCircle, AlertCircle } from "lucide-react";
+import { Mail, MapPin, Send, CheckCircle, AlertCircle, ArrowUpRight } from "lucide-react";
 
-const contactInfo = [
-  {
-    icon: <Mail className="w-5 h-5" />,
-    label: "Email",
-    value: "oliver413dev@gmail.com",
-    href: "mailto:oliver413dev@gmail.com",
-  },
-  {
-    icon: <MapPin className="w-5 h-5" />,
-    label: "Ubicacion",
-    value: "Colombia",
-    href: null,
-  },
-];
+type Status = "idle" | "sending" | "success" | "error";
 
 const socials = [
   {
@@ -39,131 +26,120 @@ const socials = [
   },
 ];
 
-type Status = "idle" | "sending" | "success" | "error";
-
 export default function Contact() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const ref           = useRef<HTMLDivElement>(null);
+  const [vis, setVis] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [form, setForm] = useState({
     from_name: "",
-    email: "",
-    subject: "",
-    message: "",
+    email:     "",
+    subject:   "",
+    message:   "",
   });
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0, rootMargin: "0px 0px -50px 0px" }
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVis(true); obs.disconnect(); } },
+      { threshold: 0.1 }
     );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
   }, []);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("sending");
-
-    // EmailJS integration — requires EMAILJS_PUBLIC_KEY in env or you can use the API
     try {
-      const body = {
-        service_id: "default_service",
-        template_id: "template_b2ek4dq",
-        user_id: "jOIyZeKrA3LUrNRa_",
-        template_params: {
-          from_name: form.from_name,
-          email: form.email,
-          subject: form.subject,
-          message: form.message,
-        },
-      };
-
       const res = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
+        body: JSON.stringify({
+          service_id: "default_service",
+          template_id: "template_b2ek4dq",
+          user_id: "jOIyZeKrA3LUrNRa_",
+          template_params: form,
+        }),
       });
-
       if (res.ok) {
         setStatus("success");
         setForm({ from_name: "", email: "", subject: "", message: "" });
-        setTimeout(() => setStatus("idle"), 5000);
       } else {
         setStatus("error");
-        setTimeout(() => setStatus("idle"), 5000);
       }
     } catch {
       setStatus("error");
+    } finally {
       setTimeout(() => setStatus("idle"), 5000);
     }
   };
 
-  const inputClass =
-    "w-full px-4 py-3 bg-surface-2 border border-border rounded-xl text-foreground placeholder-muted text-sm font-sans focus:outline-none focus:border-cyan/50 focus:ring-1 focus:ring-cyan/20 transition-all duration-300";
+  const input =
+    "w-full px-4 py-3.5 bg-surface-2 border border-border rounded-xl text-foreground placeholder-muted text-sm font-sans focus:outline-none focus:border-cyan/50 focus:ring-1 focus:ring-cyan/20 transition-all duration-300";
 
   return (
-    <section id="contacto" className="relative py-32 overflow-hidden" aria-label="Seccion de contacto">
-      {/* Ambient */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-cyan/5 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple/5 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+    <section id="contacto" className="relative py-36 overflow-hidden" aria-label="Seccion de contacto">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-cyan/5 blur-3xl pointer-events-none" aria-hidden="true" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-purple/5 blur-3xl pointer-events-none" aria-hidden="true" />
 
       <div
-        ref={sectionRef}
-        className={`max-w-6xl mx-auto px-6 transition-all duration-1000 ${
-          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-        }`}
+        ref={ref}
+        className={`max-w-7xl mx-auto px-6 transition-all duration-1000 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
-        {/* Header */}
-        <div className="text-center mb-16">
-          <span className="font-mono text-xs tracking-widest uppercase text-cyan">// contacto</span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-4">
+        {/* section label */}
+        <div className="flex items-center gap-4 mb-20">
+          <span className="font-mono text-xs tracking-widest uppercase text-cyan">// 04 — contacto</span>
+          <div className="flex-1 h-px bg-border" aria-hidden="true" />
+        </div>
+
+        {/* big CTA headline */}
+        <div className="text-center mb-20">
+          <h2 className="font-display font-extrabold text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight mb-6 text-balance">
             Trabajemos{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-purple">
-              juntos
-            </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-purple">juntos</span>
           </h2>
-          <p className="text-muted text-lg max-w-xl mx-auto">
-            Tengo un proyecto en mente? Estoy disponible para nuevas oportunidades y colaboraciones.
+          <p className="text-muted-light text-lg max-w-xl mx-auto">
+            Tienes un proyecto en mente? Estoy disponible para nuevas oportunidades y colaboraciones.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-12">
+        {/* layout */}
+        <div className="grid lg:grid-cols-5 gap-14">
 
-          {/* Left info */}
-          <div className="lg:col-span-2 flex flex-col justify-between gap-10">
-            <div>
-              <h3 className="text-xl font-bold text-foreground mb-6">Hablemos</h3>
-              <div className="space-y-4">
-                {contactInfo.map((item) => (
-                  <div key={item.label} className="flex items-center gap-4 group">
-                    <div className="w-11 h-11 flex items-center justify-center rounded-xl bg-cyan/10 border border-cyan/20 text-cyan flex-shrink-0 group-hover:bg-cyan/15 transition-colors">
-                      {item.icon}
+          {/* left */}
+          <div className="lg:col-span-2 flex flex-col gap-10">
+            {/* contact info */}
+            <div className="space-y-5">
+              {[
+                { icon: Mail,    label: "Email",     value: "oliver413dev@gmail.com", href: "mailto:oliver413dev@gmail.com" },
+                { icon: MapPin,  label: "Ubicacion", value: "Colombia",               href: null },
+              ].map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.label} className="flex items-center gap-4 group" data-hover>
+                    <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-cyan/10 border border-cyan/20 text-cyan flex-shrink-0 group-hover:bg-cyan/15 transition-colors">
+                      <Icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-muted text-xs font-mono uppercase tracking-widest">{item.label}</p>
+                      <p className="font-mono text-[10px] text-muted uppercase tracking-widest">{item.label}</p>
                       {item.href ? (
-                        <a href={item.href} className="text-foreground hover:text-cyan transition-colors text-sm font-medium">
+                        <a href={item.href} className="text-foreground hover:text-cyan transition-colors font-medium text-sm">
                           {item.value}
                         </a>
                       ) : (
-                        <p className="text-foreground text-sm font-medium">{item.value}</p>
+                        <p className="text-foreground font-medium text-sm">{item.value}</p>
                       )}
                     </div>
                   </div>
-                ))}
-              </div>
+                );
+              })}
             </div>
 
-            {/* Socials */}
+            {/* socials */}
             <div>
-              <p className="text-muted text-xs font-mono uppercase tracking-widest mb-4">Redes sociales</p>
+              <p className="font-mono text-[10px] text-muted uppercase tracking-widest mb-5">Redes sociales</p>
               <div className="flex gap-3">
                 {socials.map((s) => (
                   <a
@@ -172,6 +148,7 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Perfil de ${s.label}`}
+                    data-hover
                     className="w-12 h-12 flex items-center justify-center rounded-xl border border-border text-muted
                                hover:border-cyan/40 hover:text-cyan hover:bg-cyan/5 transition-all duration-300"
                   >
@@ -181,100 +158,56 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Big text decoration */}
-            <div
-              className="hidden lg:block font-mono text-8xl font-black text-foreground/[0.03] leading-none select-none"
-              aria-hidden="true"
-            >
+            {/* big deco text */}
+            <div className="font-display text-8xl font-black text-foreground/[0.03] leading-none select-none hidden lg:block" aria-hidden="true">
               OB
             </div>
           </div>
 
-          {/* Form */}
+          {/* right — form */}
           <div className="lg:col-span-3">
             <div className="p-8 rounded-2xl border border-border bg-surface/50 backdrop-blur-sm">
               <form onSubmit={handleSubmit} noValidate aria-label="Formulario de contacto">
                 <div className="grid sm:grid-cols-2 gap-4 mb-4">
                   <div>
                     <label htmlFor="from_name" className="sr-only">Nombre completo</label>
-                    <input
-                      id="from_name"
-                      name="from_name"
-                      type="text"
-                      required
-                      value={form.from_name}
-                      onChange={handleChange}
-                      placeholder="Nombre completo *"
-                      className={inputClass}
-                    />
+                    <input id="from_name" name="from_name" type="text" required value={form.from_name} onChange={handleChange} placeholder="Nombre completo *" className={input} />
                   </div>
                   <div>
                     <label htmlFor="email" className="sr-only">Correo electronico</label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      value={form.email}
-                      onChange={handleChange}
-                      placeholder="Correo electronico *"
-                      className={inputClass}
-                    />
+                    <input id="email" name="email" type="email" required value={form.email} onChange={handleChange} placeholder="Correo electronico *" className={input} />
                   </div>
                 </div>
-
                 <div className="mb-4">
                   <label htmlFor="subject" className="sr-only">Asunto</label>
-                  <input
-                    id="subject"
-                    name="subject"
-                    type="text"
-                    required
-                    value={form.subject}
-                    onChange={handleChange}
-                    placeholder="Asunto *"
-                    className={inputClass}
-                  />
+                  <input id="subject" name="subject" type="text" required value={form.subject} onChange={handleChange} placeholder="Asunto *" className={input} />
                 </div>
-
                 <div className="mb-6">
                   <label htmlFor="message" className="sr-only">Mensaje</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={6}
-                    required
-                    value={form.message}
-                    onChange={handleChange}
-                    placeholder="Cuentame sobre tu proyecto..."
-                    className={`${inputClass} resize-none`}
-                  />
+                  <textarea id="message" name="message" rows={6} required value={form.message} onChange={handleChange} placeholder="Cuentame sobre tu proyecto..." className={`${input} resize-none`} />
                 </div>
 
-                {/* Status messages */}
                 {status === "success" && (
                   <div className="flex items-center gap-2 text-green-400 text-sm mb-4 font-medium" role="alert">
-                    <CheckCircle className="w-4 h-4" />
-                    Mensaje enviado con exito!
+                    <CheckCircle className="w-4 h-4" /> Mensaje enviado con exito!
                   </div>
                 )}
                 {status === "error" && (
                   <div className="flex items-center gap-2 text-red-400 text-sm mb-4 font-medium" role="alert">
-                    <AlertCircle className="w-4 h-4" />
-                    Error al enviar. Intenta de nuevo.
+                    <AlertCircle className="w-4 h-4" /> Error al enviar. Intenta de nuevo.
                   </div>
                 )}
 
                 <button
                   type="submit"
                   disabled={status === "sending"}
-                  className="w-full flex items-center justify-center gap-3 py-3.5 bg-cyan text-[#080b12] font-bold rounded-xl
-                             hover:bg-cyan/90 glow-cyan transition-all duration-300 active:scale-98 disabled:opacity-60
-                             disabled:cursor-not-allowed"
+                  data-hover
+                  className="w-full flex items-center justify-center gap-3 py-4 bg-cyan text-background font-bold rounded-xl
+                             hover:bg-cyan/90 glow-cyan transition-all duration-300 active:scale-98 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   {status === "sending" ? (
                     <>
-                      <span className="w-4 h-4 border-2 border-[#080b12]/40 border-t-[#080b12] rounded-full animate-spin" aria-hidden="true" />
+                      <span className="w-4 h-4 border-2 border-background/40 border-t-background rounded-full animate-spin" aria-hidden="true" />
                       Enviando...
                     </>
                   ) : (

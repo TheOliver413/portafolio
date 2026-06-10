@@ -1,321 +1,302 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react";
+import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
 
 type Project = {
   id: number;
+  number: string;
   title: string;
-  description: string;
-  longDesc: string;
+  subtitle: string;
+  desc: string;
   tags: string[];
   image: string;
   demo: string;
   repo?: string;
   featured?: boolean;
-  number: string;
 };
 
 const projects: Project[] = [
   {
     id: 1,
+    number: "01",
     title: "World Developers",
-    description: "Work & Relax para IT",
-    longDesc:
-      "Plataforma Full Stack para trabajadores del mundo IT que ofrece hospedajes en hoteles bajo la metodologia Work & Relax. Proyecto grupal final del Bootcamp Henry.",
+    subtitle: "Work & Relax para IT",
+    desc: "Plataforma Full Stack para trabajadores del mundo IT que ofrece hospedajes en hoteles bajo la metodologia Work & Relax. Proyecto grupal final del Bootcamp Henry.",
     tags: ["React", "Redux", "Node.js", "PostgreSQL", "Express"],
     image: "/proyecto1.png",
     demo: "https://world-dev-front.vercel.app",
     repo: "https://github.com/TheOliver413/WorldDev-Front.git",
     featured: true,
-    number: "01",
   },
   {
     id: 2,
+    number: "02",
     title: "Wiki Games",
-    description: "Enciclopedia de videojuegos",
-    longDesc:
-      "Single Page Application que consume la API externa RAWG. Permite explorar, buscar, filtrar y ordenar miles de videojuegos, ademas de crear nuevos registros.",
+    subtitle: "Enciclopedia de videojuegos",
+    desc: "Single Page Application que consume la API externa RAWG. Permite explorar, buscar, filtrar y ordenar miles de videojuegos, ademas de crear nuevos registros.",
     tags: ["React", "Redux", "Node.js", "Express", "RAWG API"],
     image: "/proyecto2.png",
     demo: "https://wiki-game-front.vercel.app",
     repo: "https://github.com/TheOliver413/WikiGame-Front.git",
-    number: "02",
   },
   {
     id: 3,
+    number: "03",
     title: "Mundo Pokemon",
-    description: "SPA para explorar Pokemon",
-    longDesc:
-      "Single Page Application desarrollada como Proyecto Individual en Henry. Permite explorar la Pokedex, buscar y filtrar Pokemon, y crear nuevos registros.",
+    subtitle: "SPA para explorar Pokemon",
+    desc: "Single Page Application desarrollada como Proyecto Individual en Henry. Permite explorar la Pokedex, buscar y filtrar Pokemon, y crear nuevos registros.",
     tags: ["React", "Redux", "Node.js", "PostgreSQL", "PokeAPI"],
     image: "/proyecto3.png",
     demo: "https://client-kohl.vercel.app",
     repo: "https://github.com/TheOliver413/Mundo-Pokemon-Front.git",
-    number: "03",
   },
   {
     id: 4,
+    number: "04",
     title: "PI Food",
-    description: "App de recetas y gastronomia",
-    longDesc:
-      "Proyecto Individual del Bootcamp Henry. Aplicacion para explorar recetas, buscarlas por nombre, filtrarlas por tipo de dieta y ordenar por distintos criterios.",
+    subtitle: "App de recetas y gastronomia",
+    desc: "Proyecto Individual del Bootcamp Henry. Aplicacion para explorar recetas, buscarlas por nombre, filtrarlas por tipo de dieta y ordenar por distintos criterios.",
     tags: ["React", "Redux", "Node.js", "Express", "PostgreSQL"],
     image: "/proyecto4.png",
     demo: "https://pi-food-murex.vercel.app",
     repo: "https://github.com/TheOliver413/CLIENT_FOOD",
-    number: "04",
   },
   {
     id: 5,
+    number: "05",
     title: "Blockify",
-    description: "Programacion visual con bloques",
-    longDesc:
-      "Aplicacion interactiva basada en la libreria Blockly. Los usuarios crean programas mediante bloques de codigo arrastrables y conectables de forma intuitiva.",
+    subtitle: "Programacion visual con bloques",
+    desc: "Aplicacion interactiva basada en la libreria Blockly. Los usuarios crean programas mediante bloques de codigo arrastrables y conectables de forma intuitiva.",
     tags: ["React", "Blockly", "JavaScript"],
     image: "/Blockify.png",
     demo: "https://blockify-delta.vercel.app",
     repo: "https://github.com/TheOliver413/Blockify.git",
-    number: "05",
   },
   {
     id: 6,
+    number: "06",
     title: "Green Wrap Eatery",
-    description: "E-commerce corporativo",
-    longDesc:
-      "Web corporativa con tienda virtual desarrollada en WordPress y WooCommerce. Totalmente responsive con Stripe como pasarela de pagos para clientes en Georgia, USA.",
+    subtitle: "E-commerce corporativo",
+    desc: "Web corporativa con tienda virtual desarrollada en WordPress y WooCommerce. Totalmente responsive con Stripe como pasarela de pagos para clientes en Georgia, USA.",
     tags: ["WordPress", "WooCommerce", "Stripe"],
     image: "/catering.png",
     demo: "https://gwrapeatery.com",
-    number: "06",
   },
   {
     id: 7,
+    number: "07",
     title: "Coca Cola Landing",
-    description: "Landing page tematica",
-    longDesc:
-      "Sitio web tematico de Coca Cola desarrollado para reforzar conceptos. Construido en HTML5, CSS3 y jQuery, con envio de correo via FormSubmit API. Totalmente responsive.",
+    subtitle: "Landing page tematica",
+    desc: "Sitio web tematico de Coca Cola desarrollado para reforzar conceptos. Construido en HTML5, CSS3 y jQuery, con envio de correo via FormSubmit API. Totalmente responsive.",
     tags: ["HTML5", "CSS3", "jQuery", "FormSubmit"],
     image: "/cocacola.png",
     demo: "https://coca-cola-kappa.vercel.app",
     repo: "https://github.com/TheOliver413/Coca-Cola",
-    number: "07",
   },
 ];
 
-export default function Projects() {
-  const [active, setActive] = useState(0);
-  const [prevActive, setPrevActive] = useState<number | null>(null);
-  const [direction, setDirection] = useState<"left" | "right">("right");
-  const [animating, setAnimating] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+/* ---- individual row ---- */
+function ProjectRow({ project, index }: { project: Project; index: number }) {
+  const ref            = useRef<HTMLDivElement>(null);
+  const [vis, setVis]  = useState(false);
+  const [hov, setHov]  = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0, rootMargin: "0px 0px -50px 0px" }
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVis(true); obs.disconnect(); } },
+      { threshold: 0.1 }
     );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => observer.disconnect();
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
   }, []);
 
-  const go = (next: number, dir: "left" | "right") => {
-    if (animating) return;
-    setDirection(dir);
-    setPrevActive(active);
-    setAnimating(true);
-    setTimeout(() => {
-      setActive(next);
-      setPrevActive(null);
-      setAnimating(false);
-    }, 350);
-  };
+  return (
+    <div
+      ref={ref}
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+      className={`relative group project-line border-b border-border transition-all duration-700 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+      style={{ transitionDelay: `${index * 80}ms` }}
+      data-hover
+    >
+      {/* hover bg wash */}
+      <div
+        className={`absolute inset-0 bg-cyan/[0.025] transition-opacity duration-400 pointer-events-none ${hov ? "opacity-100" : "opacity-0"}`}
+        aria-hidden="true"
+      />
 
-  const prev = () => go((active - 1 + projects.length) % projects.length, "left");
-  const next = () => go((active + 1) % projects.length, "right");
+      <div className="relative grid grid-cols-12 gap-4 items-center py-7 px-2">
 
-  const project = projects[active];
+        {/* number */}
+        <div className="col-span-1 hidden md:block">
+          <span
+            className={`font-mono text-xs tracking-widest transition-colors duration-300 ${hov ? "text-cyan" : "text-muted/40"}`}
+          >
+            {project.number}
+          </span>
+        </div>
+
+        {/* title + subtitle */}
+        <div className="col-span-12 md:col-span-4">
+          <div className="flex items-start gap-3">
+            {project.featured && (
+              <span className="mt-1 w-1.5 h-1.5 rounded-full bg-cyan flex-shrink-0 animate-pulse" aria-label="Proyecto destacado" />
+            )}
+            <div>
+              <h3
+                className={`font-display font-bold text-xl md:text-2xl tracking-tight transition-colors duration-300 ${hov ? "text-cyan" : "text-foreground"}`}
+              >
+                {project.title}
+              </h3>
+              <p className="font-mono text-xs text-muted tracking-wide mt-0.5">{project.subtitle}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* desc */}
+        <div className="col-span-12 md:col-span-4">
+          <p className="text-muted text-sm leading-relaxed">{project.desc}</p>
+        </div>
+
+        {/* tags */}
+        <div className="col-span-12 md:col-span-2 hidden lg:flex flex-wrap gap-1.5">
+          {project.tags.slice(0, 3).map((t) => (
+            <span key={t} className="font-mono text-[10px] px-2 py-1 rounded-full bg-surface-3 border border-border text-muted-light">
+              {t}
+            </span>
+          ))}
+          {project.tags.length > 3 && (
+            <span className="font-mono text-[10px] px-2 py-1 rounded-full bg-surface-3 border border-border text-muted">
+              +{project.tags.length - 3}
+            </span>
+          )}
+        </div>
+
+        {/* actions */}
+        <div className="col-span-12 md:col-span-1 flex items-center justify-start md:justify-end gap-2">
+          <a
+            href={project.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Ver demo de ${project.title}`}
+            className="w-9 h-9 flex items-center justify-center rounded-xl border border-border text-muted
+                       hover:border-cyan/40 hover:text-cyan transition-all duration-300"
+          >
+            <ExternalLink className="w-4 h-4" />
+          </a>
+          {project.repo && (
+            <a
+              href={project.repo}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Ver repositorio de ${project.title}`}
+              className="w-9 h-9 flex items-center justify-center rounded-xl border border-border text-muted
+                         hover:border-purple/40 hover:text-purple transition-all duration-300"
+            >
+              <Github className="w-4 h-4" />
+            </a>
+          )}
+        </div>
+      </div>
+
+      {/* floating preview on hover */}
+      <div
+        className={`absolute right-24 top-1/2 -translate-y-1/2 z-20 w-52 aspect-video rounded-xl overflow-hidden border border-border shadow-2xl shadow-black/60 pointer-events-none
+                    transition-all duration-400 ${hov ? "opacity-100 scale-100 translate-x-0" : "opacity-0 scale-90 translate-x-4"}`}
+        aria-hidden="true"
+      >
+        <img
+          src={project.image}
+          alt=""
+          className="w-full h-full object-cover object-top"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+      </div>
+    </div>
+  );
+}
+
+/* ---- section ---- */
+export default function Projects() {
+  const ref           = useRef<HTMLDivElement>(null);
+  const [vis, setVis] = useState(false);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVis(true); obs.disconnect(); } },
+      { threshold: 0.05 }
+    );
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
 
   return (
-    <section id="proyectos" className="relative py-32 overflow-hidden" aria-label="Mis proyectos">
-      {/* Ambient */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-purple/5 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+    <section id="proyectos" className="relative py-36 overflow-hidden" aria-label="Mis proyectos">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-purple/5 blur-3xl pointer-events-none" aria-hidden="true" />
 
       <div
-        ref={sectionRef}
-        className={`max-w-6xl mx-auto px-6 transition-all duration-1000 ${
-          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-        }`}
+        ref={ref}
+        className={`max-w-7xl mx-auto px-6 transition-all duration-1000 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
       >
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-14">
-          <div>
-            <span className="font-mono text-xs tracking-widest uppercase text-cyan">// proyectos</span>
-            <h2 className="text-4xl md:text-5xl font-bold mt-3">
-              Trabajo{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-purple">
-                Seleccionado
-              </span>
-            </h2>
-          </div>
+        {/* section label */}
+        <div className="flex items-center gap-4 mb-20">
+          <span className="font-mono text-xs tracking-widest uppercase text-cyan">// 03 — proyectos</span>
+          <div className="flex-1 h-px bg-border" aria-hidden="true" />
+        </div>
 
-          {/* Nav arrows */}
-          <div className="flex items-center gap-3">
-            <span className="font-mono text-muted text-sm">
-              {String(active + 1).padStart(2, "0")}{" "}
-              <span className="text-border">/</span>{" "}
-              {String(projects.length).padStart(2, "0")}
+        {/* header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
+          <h2 className="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight">
+            Trabajo{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-purple">
+              Seleccionado
             </span>
-            <button
-              onClick={prev}
-              aria-label="Proyecto anterior"
-              className="w-10 h-10 flex items-center justify-center rounded-xl border border-border text-muted
-                         hover:border-cyan/40 hover:text-cyan transition-all duration-300"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={next}
-              aria-label="Proyecto siguiente"
-              className="w-10 h-10 flex items-center justify-center rounded-xl border border-border text-muted
-                         hover:border-cyan/40 hover:text-cyan transition-all duration-300"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
+          </h2>
+          <p className="font-mono text-muted text-sm">
+            {projects.length} proyectos publicados
+          </p>
         </div>
 
-        {/* Main showcase */}
-        <div className="grid lg:grid-cols-12 gap-8 items-center">
-
-          {/* Image — magazine style full-bleed */}
-          <div className="lg:col-span-7 relative">
-            <div className="relative rounded-2xl overflow-hidden border border-border aspect-video group">
-              {/* Project number */}
+        {/* ---- editorial list ---- */}
+        <div role="list" aria-label="Lista de proyectos">
+          {/* header row */}
+          <div className="grid grid-cols-12 gap-4 px-2 pb-4 border-b border-border">
+            {["#", "Proyecto", "Descripcion", "Stack", ""].map((h, i) => (
               <div
-                className="absolute top-4 left-4 z-20 font-mono text-5xl font-bold text-white/10 leading-none pointer-events-none select-none"
-                aria-hidden="true"
+                key={i}
+                className={`font-mono text-[10px] tracking-widest uppercase text-muted/50
+                  ${i === 0 ? "col-span-1 hidden md:block" : ""}
+                  ${i === 1 ? "col-span-4" : ""}
+                  ${i === 2 ? "col-span-4" : ""}
+                  ${i === 3 ? "col-span-2 hidden lg:block" : ""}
+                  ${i === 4 ? "col-span-1 text-right" : ""}
+                `}
               >
-                {project.number}
+                {h}
               </div>
-
-              <img
-                key={active}
-                src={project.image}
-                alt={`Captura de pantalla de ${project.title}`}
-                className={`w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105 ${
-                  animating
-                    ? direction === "right"
-                      ? "-translate-x-8 opacity-0"
-                      : "translate-x-8 opacity-0"
-                    : "translate-x-0 opacity-100"
-                }`}
-              />
-
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#080b12]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                <div className="flex gap-3">
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-cyan text-[#080b12] font-bold rounded-lg text-sm hover:bg-cyan/90 transition-colors"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    Demo en vivo
-                  </a>
-                  {project.repo && (
-                    <a
-                      href={project.repo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 bg-white/10 text-foreground rounded-lg text-sm hover:bg-white/20 transition-colors backdrop-blur-sm"
-                    >
-                      <Github className="w-4 h-4" />
-                      Repositorio
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
 
-          {/* Info panel */}
-          <div
-            className={`lg:col-span-5 transition-all duration-350 ${
-              animating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
-            }`}
-          >
-            {/* Featured badge */}
-            {project.featured && (
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan/10 border border-cyan/20 text-cyan font-mono text-xs tracking-widest uppercase mb-4">
-                <span className="w-1.5 h-1.5 rounded-full bg-cyan animate-pulse" aria-hidden="true" />
-                Proyecto destacado
-              </span>
-            )}
-
-            <h3 className="text-3xl font-bold text-foreground mb-2">{project.title}</h3>
-            <p className="text-cyan font-mono text-sm mb-5">{project.description}</p>
-
-            <p className="text-muted leading-relaxed mb-7">{project.longDesc}</p>
-
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-8" aria-label="Tecnologias utilizadas">
-              {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 rounded-full bg-surface-2 border border-border text-foreground/70 text-xs font-mono"
-                >
-                  {tag}
-                </span>
-              ))}
+          {projects.map((p, i) => (
+            <div key={p.id} role="listitem">
+              <ProjectRow project={p} index={i} />
             </div>
-
-            {/* Action links */}
-            <div className="flex flex-wrap gap-3">
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-cyan text-[#080b12] font-bold rounded-xl text-sm
-                           hover:bg-cyan/90 glow-cyan transition-all duration-300"
-              >
-                <ExternalLink className="w-4 h-4" />
-                Ver demo
-              </a>
-              {project.repo && (
-                <a
-                  href={project.repo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 border border-border text-foreground rounded-xl text-sm
-                             hover:border-purple/40 hover:text-purple transition-all duration-300"
-                >
-                  <Github className="w-4 h-4" />
-                  Ver codigo
-                </a>
-              )}
-            </div>
-          </div>
+          ))}
         </div>
 
-        {/* Dot nav */}
-        <div className="flex items-center justify-center gap-2 mt-12" role="tablist" aria-label="Navegacion de proyectos">
-          {projects.map((p, i) => (
-            <button
-              key={p.id}
-              onClick={() => go(i, i > active ? "right" : "left")}
-              role="tab"
-              aria-selected={active === i}
-              aria-label={`Ir al proyecto ${p.title}`}
-              className={`transition-all duration-300 rounded-full ${
-                active === i
-                  ? "w-8 h-2 bg-cyan"
-                  : "w-2 h-2 bg-border hover:bg-muted"
-              }`}
-            />
-          ))}
+        {/* all projects CTA */}
+        <div className="mt-12 flex justify-center">
+          <a
+            href="https://github.com/TheOliver413"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl border border-border text-muted-light
+                       hover:border-border-hover hover:text-cyan transition-all duration-300 group font-mono text-sm"
+          >
+            Ver todos los proyectos en GitHub
+            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </a>
         </div>
       </div>
     </section>
