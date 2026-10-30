@@ -5,12 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" id="meta-theme-color" content="#07090e" />
   <title>TGB Tech Studio | Desarrollo de Software a Medida, Web &amp; Apps Móviles</title>
-  <meta name="description" content="TGB Tech Studio (TGB Labs) — Estudio ágil de ingeniería y desarrollo de software liderado por Oliver Borda. Creamos software a la medida, aplicaciones móviles y plataformas web profesionales con excelente experiencia de usuario." />
+  <meta name="description" content="TGB Tech Studio (TGB Labs) — Estudio de desarrollo de software a medida, landing pages profesionales, aplicaciones móviles y sistemas corporativos liderado por Oliver Borda." />
 
-  <!-- Preconnect to Asset & Font Domains -->
+  <!-- Favicon TGB Tech Studio (Isotipo Geométrico 3D en la pestaña del navegador) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2307090e'/%3E%3Cpolygon points='16,4 28,10 28,22 16,28 4,22 4,10' fill='none' stroke='%2306b6d4' stroke-width='2' stroke-linejoin='round'/%3E%3Cpolyline points='4,10 16,16 28,10' fill='none' stroke='%2306b6d4' stroke-width='2' stroke-linejoin='round'/%3E%3Cline x1='16' y1='28' x2='16' y2='16' stroke='%2306b6d4' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='16' r='3.5' fill='%232563eb'/%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2307090e'/%3E%3Cpolygon points='16,4 28,10 28,22 16,28 4,22 4,10' fill='none' stroke='%2306b6d4' stroke-width='2' stroke-linejoin='round'/%3E%3Cpolyline points='4,10 16,16 28,10' fill='none' stroke='%2306b6d4' stroke-width='2' stroke-linejoin='round'/%3E%3Cline x1='16' y1='28' x2='16' y2='16' stroke='%2306b6d4' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='16' r='3.5' fill='%232563eb'/%3E%3C/svg%3E" />
+
+  <!-- Preconnect a CDNs & Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS via CDN -->
@@ -49,14 +54,14 @@
       --bg-primary: #f8fafc;
       --bg-secondary: #ffffff;
       --bg-tertiary: #f1f5f9;
-      --bg-card: rgba(255, 255, 255, 0.9);
-      --bg-nav: rgba(255, 255, 255, 0.82);
+      --bg-card: rgba(255, 255, 255, 0.92);
+      --bg-nav: rgba(255, 255, 255, 0.85);
       --text-primary: #0f172a;
       --text-secondary: #334155;
       --text-muted: #64748b;
       --border-color: #e2e8f0;
       --accent-cyan: #0284c7;
-      --grid-line: rgba(148, 163, 184, 0.18);
+      --grid-line: rgba(148, 163, 184, 0.16);
       color-scheme: light;
     }
 
@@ -64,8 +69,8 @@
       --bg-primary: #07090e;
       --bg-secondary: #0b0f19;
       --bg-tertiary: #07090e;
-      --bg-card: rgba(11, 15, 25, 0.9);
-      --bg-nav: rgba(7, 9, 14, 0.78);
+      --bg-card: rgba(11, 15, 25, 0.92);
+      --bg-nav: rgba(7, 9, 14, 0.82);
       --text-primary: #f8fafc;
       --text-secondary: #cbd5e1;
       --text-muted: #94a3b8;
@@ -106,7 +111,7 @@
       font-variant-numeric: tabular-nums;
     }
 
-    /* Theme-Aware Utility Classes */
+    /* Clases adaptables al tema */
     .theme-bg-primary { background-color: var(--bg-primary); }
     .theme-bg-secondary { background-color: var(--bg-secondary); }
     .theme-bg-tertiary { background-color: var(--bg-tertiary); }
@@ -117,7 +122,7 @@
     .theme-border { border-color: var(--border-color); }
     .theme-cyan { color: var(--accent-cyan); }
 
-    /* Subtle Cyber Grid Overlay */
+    /* Malla sutil */
     .bg-cyber-grid {
       background-size: 48px 48px;
       background-image: 
@@ -125,7 +130,7 @@
         linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
     }
 
-    /* Vercel-Grade Glassmorphism + Mouse Spotlight Cards */
+    /* Tarjetas con efecto spotlight */
     .cyber-card {
       position: relative;
       background: var(--bg-card);
@@ -165,7 +170,7 @@
       box-shadow: 0 14px 38px -12px rgba(6, 182, 212, 0.18), 0 0 22px -8px rgba(37, 99, 235, 0.2);
     }
 
-    /* Gradient Text (Adapts to Light & Dark Mode) */
+    /* Gradiente de texto */
     html.dark .text-gradient-cyber {
       background: linear-gradient(135deg, #ffffff 15%, #93c5fd 58%, #06b6d4 100%);
       -webkit-background-clip: text;
@@ -177,7 +182,7 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* Form Inputs Adaptation */
+    /* Inputs adaptables */
     .theme-input {
       background-color: var(--bg-tertiary);
       border: 1px solid var(--border-color);
@@ -222,13 +227,13 @@
 
 <body class="font-sans antialiased">
 
-  <!-- Skip to Main Content Link -->
+  <!-- Enlace accesible para saltar al contenido -->
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2.5 focus:rounded-xl focus:bg-electric focus:text-white focus:font-mono focus:text-xs focus:shadow-glow-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">
     Saltar al contenido principal
   </a>
 
   <!-- ==========================================
-       1. NAVBAR FIJO CON BLUR BACKDROP & SWITCH TEMA
+       1. NAVBAR FIJO CON BLUR & SWITCH TEMA
   =========================================== -->
   <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-colors duration-300 theme-nav backdrop-blur-xl border-b">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -253,25 +258,23 @@
         </div>
       </a>
 
-      <!-- Menú de Navegación Desktop -->
+      <!-- Menú Desktop -->
       <nav aria-label="Navegación principal" class="hidden md:flex items-center gap-1 lg:gap-2">
         <a href="#inicio" class="px-3.5 py-2 text-sm font-medium theme-text-secondary hover:text-electric dark:hover:text-cyanNeon transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">Inicio</a>
         <a href="#servicios" class="px-3.5 py-2 text-sm font-medium theme-text-secondary hover:text-electric dark:hover:text-cyanNeon transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">Servicios</a>
+        <a href="#desarrollos" class="px-3.5 py-2 text-sm font-medium theme-text-secondary hover:text-electric dark:hover:text-cyanNeon transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">Desarrollos</a>
         <a href="#nosotros" class="px-3.5 py-2 text-sm font-medium theme-text-secondary hover:text-electric dark:hover:text-cyanNeon transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">Nuestro Enfoque</a>
         <a href="#tecnologias" class="px-3.5 py-2 text-sm font-medium theme-text-secondary hover:text-electric dark:hover:text-cyanNeon transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">Tecnologías</a>
-        <a href="#proceso" class="px-3.5 py-2 text-sm font-medium theme-text-secondary hover:text-electric dark:hover:text-cyanNeon transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">Proceso</a>
         <a href="#contacto" class="px-3.5 py-2 text-sm font-medium theme-text-secondary hover:text-electric dark:hover:text-cyanNeon transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">Contacto</a>
       </nav>
 
-      <!-- Acciones Derecha: Botón Modo Claro/Oscuro + CTA + Menú Móvil -->
+      <!-- Acciones Derecha -->
       <div class="flex items-center gap-2.5 sm:gap-3">
-        <!-- Botón Cambiar Tema (Modo Claro / Oscuro) -->
+        <!-- Switch Modo Claro / Oscuro -->
         <button id="theme-toggle" type="button" aria-label="Cambiar entre modo oscuro y modo claro" class="p-2.5 rounded-xl theme-bg-secondary border theme-border theme-text-secondary hover:border-cyanNeon/60 transition-colors flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">
-          <!-- Icono Sol (Visible en Modo Oscuro para pasar a Claro) -->
           <svg id="theme-icon-sun" aria-hidden="true" class="w-5 h-5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
           </svg>
-          <!-- Icono Luna (Visible en Modo Claro para pasar a Oscuro) -->
           <svg id="theme-icon-moon" aria-hidden="true" class="w-5 h-5 text-electric hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
           </svg>
@@ -285,7 +288,7 @@
           </svg>
         </a>
 
-        <!-- Botón Hamburguesa Móvil -->
+        <!-- Botón Menú Móvil -->
         <button id="mobile-menu-btn" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden p-2.5 rounded-xl theme-bg-secondary border theme-border theme-text-secondary hover:border-cyanNeon/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">
           <svg id="menu-icon-open" aria-hidden="true" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -301,9 +304,9 @@
     <div id="mobile-menu" class="hidden md:hidden theme-bg-secondary backdrop-blur-2xl border-b theme-border px-6 py-5 space-y-3 overscroll-contain">
       <a href="#inicio" class="mobile-link block py-2 text-base font-medium theme-text-primary hover:text-cyanNeon transition-colors">Inicio</a>
       <a href="#servicios" class="mobile-link block py-2 text-base font-medium theme-text-primary hover:text-cyanNeon transition-colors">Servicios</a>
+      <a href="#desarrollos" class="mobile-link block py-2 text-base font-medium theme-text-primary hover:text-cyanNeon transition-colors">Desarrollos</a>
       <a href="#nosotros" class="mobile-link block py-2 text-base font-medium theme-text-primary hover:text-cyanNeon transition-colors">Nuestro Enfoque</a>
       <a href="#tecnologias" class="mobile-link block py-2 text-base font-medium theme-text-primary hover:text-cyanNeon transition-colors">Tecnologías</a>
-      <a href="#proceso" class="mobile-link block py-2 text-base font-medium theme-text-primary hover:text-cyanNeon transition-colors">Proceso</a>
       <a href="#contacto" class="mobile-link block py-2 text-base font-medium theme-text-primary hover:text-cyanNeon transition-colors">Contacto</a>
       <div class="pt-2">
         <a href="#contacto" class="mobile-link w-full inline-flex justify-center items-center gap-2 px-5 py-3 rounded-xl bg-electric text-white font-display font-semibold text-sm shadow-glow-blue">
@@ -315,38 +318,34 @@
 
   <main id="main-content">
     <!-- ==========================================
-         2. HERO SECTION (TEXTO LIMPIO A LA IZQUIERDA + NODO INTERACTIVO A LA DERECHA)
+         2. HERO SECTION CON MOCKUP VISUAL IMPACTANTE
     =========================================== -->
     <section id="inicio" class="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden bg-cyber-grid theme-bg-primary">
-      <!-- Luces Ambientales Suaves -->
-      <div aria-hidden="true" class="absolute top-1/3 right-10 w-[480px] h-[480px] bg-electric/15 rounded-full blur-[130px] pointer-events-none z-0"></div>
-      <div aria-hidden="true" class="absolute bottom-10 left-10 w-[340px] h-[340px] bg-cyanNeon/10 rounded-full blur-[110px] pointer-events-none z-0"></div>
+      <div aria-hidden="true" class="absolute top-1/4 right-10 w-[520px] h-[520px] bg-electric/15 rounded-full blur-[140px] pointer-events-none z-0"></div>
+      <div aria-hidden="true" class="absolute bottom-10 left-10 w-[360px] h-[360px] bg-cyanNeon/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          <!-- Columna Izquierda: Lectura 100% Limpia sin Interferencia del Gráfico (7 cols) -->
+          <!-- Columna Izquierda: Mensaje y Propuesta de Valor (7 cols) -->
           <div class="lg:col-span-7 text-left space-y-6">
             
-            <!-- Badge Superior Corporativo -->
             <div class="hero-anim inline-flex flex-wrap items-center gap-2.5 px-4 py-1.5 rounded-full theme-bg-secondary border theme-border shadow-sm">
               <span class="w-2 h-2 rounded-full bg-cyanNeon animate-pulse"></span>
-              <span class="font-mono text-xs uppercase tracking-widest theme-cyan font-semibold">ESTUDIO DE INGENIERÍA &amp; SOFTWARE A MEDIDA</span>
+              <span class="font-mono text-xs uppercase tracking-widest theme-cyan font-semibold">SOFTWARE A MEDIDA &amp; APPS MÓVILES</span>
               <span aria-hidden="true" class="hidden sm:inline-block theme-text-muted">|</span>
               <span class="text-xs theme-text-muted">Liderado por <strong class="theme-text-primary font-semibold" translate="no">Oliver Borda</strong></span>
             </div>
 
-            <!-- Titular Principal -->
             <h1 class="hero-anim font-display font-extrabold text-4xl sm:text-5xl lg:text-[3.55rem] tracking-tight leading-[1.1] text-gradient-cyber">
-              Desarrollo de Software a Medida &amp; Aplicaciones que Impulsan tu Negocio
+              Desarrollo de Software a Medida, Web &amp; Apps Móviles Profesionales
             </h1>
 
-            <!-- Subtítulo -->
             <p class="hero-anim text-base sm:text-lg theme-text-secondary max-w-2xl leading-relaxed font-normal">
-              Somos un equipo pequeño, ágil y apasionado por construir software de verdadera calidad. Desarrollamos <span class="theme-cyan font-semibold">aplicaciones móviles</span>, <span class="theme-cyan font-semibold">sistemas web profesionales</span> y soluciones digitales a la medida, cuidando cada detalle de la experiencia de usuario con las mejores tecnologías modernas.
+              Somos un equipo ágil y dedicado a transformar tus ideas en productos digitales de alto impacto: desde <span class="theme-cyan font-semibold">Landing Pages de alta conversión</span> y <span class="theme-cyan font-semibold">Sistemas Corporativos a Medida</span> hasta <span class="theme-cyan font-semibold">Aplicaciones Móviles</span> en iOS y Android con excelente experiencia de usuario.
             </p>
 
-            <!-- Botones de Acción -->
+            <!-- Botones CTA -->
             <div class="hero-anim flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
               <a href="#contacto" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-electric hover:bg-blue-600 text-white font-display font-bold text-base shadow-glow-blue hover:shadow-glow-cyan transition-colors duration-300 border border-blue-400/40 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">
                 <span>Iniciar un Proyecto</span>
@@ -354,17 +353,16 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
               </a>
-              <a href="#servicios" class="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl theme-bg-secondary hover:border-cyanNeon/60 theme-text-primary font-display font-semibold text-base border theme-border transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">
+              <a href="#desarrollos" class="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl theme-bg-secondary hover:border-cyanNeon/60 theme-text-primary font-display font-semibold text-base border theme-border transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">
                 <svg aria-hidden="true" class="w-5 h-5 theme-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
                 </svg>
-                <span>Explorar Soluciones</span>
+                <span>Ver Desarrollos</span>
               </a>
             </div>
 
-            <!-- Insignias Clave (Sin texto cortado) -->
+            <!-- Insignias Clave -->
             <div class="hero-anim grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-4 tabular-nums">
-              <!-- Insignia 1 -->
               <div class="cyber-card rounded-2xl p-4 flex items-start gap-3">
                 <div class="w-10 h-10 rounded-xl bg-electric/15 border border-electric/40 flex items-center justify-center theme-cyan shrink-0 mt-0.5">
                   <svg aria-hidden="true" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -377,7 +375,6 @@
                 </div>
               </div>
 
-              <!-- Insignia 2 -->
               <div class="cyber-card rounded-2xl p-4 flex items-start gap-3">
                 <div class="w-10 h-10 rounded-xl bg-cyanNeon/15 border border-cyanNeon/40 flex items-center justify-center theme-cyan shrink-0 mt-0.5">
                   <svg aria-hidden="true" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -390,7 +387,6 @@
                 </div>
               </div>
 
-              <!-- Insignia 3 -->
               <div class="cyber-card rounded-2xl p-4 flex items-start gap-3">
                 <div class="w-10 h-10 rounded-xl bg-electric/15 border border-electric/40 flex items-center justify-center theme-cyan shrink-0 mt-0.5">
                   <svg aria-hidden="true" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -406,24 +402,60 @@
 
           </div>
 
-          <!-- Columna Derecha: Gráfico Interactivo Aislado a un Lado (No afecta la lectura del texto) (5 cols) -->
+          <!-- Columna Derecha: Mockup Visual de Software Real con Halo Dinámico (5 cols) -->
           <div class="lg:col-span-5 hero-anim relative flex items-center justify-center">
-            <div class="relative w-full h-[360px] sm:h-[430px] rounded-3xl cyber-card overflow-hidden flex items-center justify-center">
-              <!-- Canvas Three.js posicionado exclusivamente dentro del panel lateral derecho -->
-              <canvas id="hero-canvas" aria-hidden="true" class="w-full h-full cursor-grab active:cursor-grabbing"></canvas>
-
-              <!-- Etiquetas Flotantes de Ecosistema Digital -->
-              <div class="absolute top-4 left-4 px-3 py-1.5 rounded-lg theme-bg-secondary/90 backdrop-blur-md border theme-border flex items-center gap-2 pointer-events-none">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span class="font-mono text-[11px] theme-text-primary font-medium">Full Stack Architecture</span>
+            <div class="relative w-full rounded-3xl cyber-card overflow-hidden p-3 shadow-2xl">
+              
+              <!-- Barra de ventana tipo Mac / Dev Studio -->
+              <div class="flex items-center justify-between pb-3 px-3 pt-1 border-b theme-border">
+                <div class="flex items-center gap-2">
+                  <span aria-hidden="true" class="w-3 h-3 rounded-full bg-red-500/80"></span>
+                  <span aria-hidden="true" class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+                  <span aria-hidden="true" class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                  <span class="ml-2 font-mono text-xs theme-text-secondary" translate="no">tgb_app_dashboard.tsx</span>
+                </div>
+                <span class="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-500 font-mono text-[10px]">60&nbsp;FPS UI</span>
               </div>
 
-              <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between px-3.5 py-2 rounded-xl theme-bg-secondary/90 backdrop-blur-md border theme-border text-[11px] font-mono theme-text-secondary">
-                <span>Web • Apps Móviles • Cloud APIs</span>
-                <button id="toggle-hero-motion" type="button" class="theme-cyan hover:underline focus-visible:outline-none">
-                  Pausar giro
-                </button>
+              <!-- Imagen Principal de Interfaz de Software Real -->
+              <div class="relative h-64 sm:h-72 w-full rounded-2xl overflow-hidden mt-3 group">
+                <img 
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" 
+                  alt="Dashboard corporativo desarrollado a medida por TGB Tech Studio con gráficos en tiempo real"
+                  class="w-full h-full object-cover object-left-top transform group-hover:scale-105 transition-transform duration-700"
+                  loading="eager"
+                  fetchpriority="high"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                
+                <!-- Badge Flotante sobre la imagen -->
+                <div class="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-obsidian/85 backdrop-blur-md border border-cyanNeon/30 flex items-center justify-between text-white">
+                  <div>
+                    <p class="font-display font-bold text-xs">Sistemas Web &amp; Apps Móviles</p>
+                    <p class="font-mono text-[10px] text-cyanNeon">React • React Native • Spring Boot</p>
+                  </div>
+                  <span class="w-2.5 h-2.5 rounded-full bg-cyanNeon animate-ping"></span>
+                </div>
               </div>
+
+              <!-- Mini Tarjetas Flotantes Inferiores -->
+              <div class="grid grid-cols-2 gap-2.5 mt-3 pt-1">
+                <div class="p-3 rounded-xl theme-bg-tertiary border theme-border flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-lg bg-electric text-white flex items-center justify-center font-bold text-xs shrink-0">iOS</div>
+                  <div class="min-w-0">
+                    <p class="text-xs font-bold theme-text-primary leading-tight">Apps Móviles</p>
+                    <p class="text-[10px] theme-text-muted truncate">iOS &amp; Android</p>
+                  </div>
+                </div>
+                <div class="p-3 rounded-xl theme-bg-tertiary border theme-border flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-lg bg-cyanNeon text-obsidian flex items-center justify-center font-bold text-xs shrink-0">&lt;/&gt;</div>
+                  <div class="min-w-0">
+                    <p class="text-xs font-bold theme-text-primary leading-tight">Software a Medida</p>
+                    <p class="text-[10px] theme-text-muted truncate">100% Personalizado</p>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -432,7 +464,7 @@
     </section>
 
     <!-- ==========================================
-         3. SERVICIOS ESPECIALIZADOS (GRID INTERACTIVO)
+         3. SERVICIOS ESPECIALIZADOS CON IMÁGENES
     =========================================== -->
     <section id="servicios" class="relative py-24 lg:py-32 theme-bg-secondary border-t theme-border">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -440,148 +472,214 @@
         <!-- Encabezado de Sección -->
         <div class="section-header max-w-3xl mb-16">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-electric/10 border border-electric/30 theme-cyan font-mono text-xs uppercase tracking-widest mb-4">
-            <span>// 01. NUESTROS SERVICIOS</span>
+            <span>// 01. SERVICIOS ESPECIALIZADOS</span>
           </div>
           <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl theme-text-primary tracking-tight mb-4">
-            Desarrollo Profesional <span class="theme-cyan">Hecho a tu Medida</span>
+            Soluciones de Software <span class="theme-cyan">Diseñadas para tu Éxito</span>
           </h2>
           <p class="theme-text-secondary text-base sm:text-lg leading-relaxed">
-            Nos involucramos de principio a fin en cada proyecto para transformar tus ideas y necesidades operativas en productos digitales modernos, rápidos y fáciles de usar.
+            Combinamos diseño intuitivo con ingeniería sólida para entregar productos digitales que resuelven problemas reales y generan valor tangible a tu negocio.
           </p>
         </div>
 
-        <!-- Grid Interactivo de 6 Tarjetas -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Grid de 6 Tarjetas con Imágenes y Contenido Enriquecido -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
           
-          <!-- Tarjeta 1 -->
-          <article class="service-card cyber-card rounded-2xl p-7 flex flex-col justify-between group relative overflow-hidden">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-electric/15 border border-electric/40 flex items-center justify-center theme-cyan mb-6 group-hover:scale-110 transition-transform">
-                <svg aria-hidden="true" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
-                </svg>
-              </div>
-              <span class="font-mono text-xs theme-cyan uppercase tracking-wider">Diseño Moderno • Alta Conversión</span>
-              <h3 class="font-display font-bold text-xl theme-text-primary mt-1.5 mb-3 group-hover:text-electric dark:group-hover:text-cyanNeon transition-colors">
-                Sitios Web Profesionales &amp; Landing Pages
-              </h3>
-              <p class="theme-text-secondary text-sm leading-relaxed mb-6">
-                Páginas web corporativas y landing pages modernas, rápidas y adaptables a cualquier dispositivo, diseñadas para transmitir confianza y atraer más clientes.
-              </p>
+          <!-- Tarjeta 1: Landing Pages -->
+          <article class="service-card cyber-card rounded-2xl overflow-hidden flex flex-col justify-between group">
+            <div class="relative h-48 w-full overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" 
+                alt="Diseño de Landing Pages de alta conversión en pantallas modernas"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-obsidian/85 backdrop-blur-md text-[10px] font-mono text-cyanNeon border border-cyanNeon/30">
+                CRO • SEO • Alta Velocidad
+              </span>
             </div>
-            <div class="pt-4 border-t theme-border flex items-center justify-between text-xs font-mono theme-text-muted">
-              <span>UI/UX / SEO / Rendimiento</span>
-              <a href="#contacto" class="theme-cyan hover:underline inline-flex items-center gap-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">Cotizar →</a>
+            <div class="p-6">
+              <h3 class="font-display font-bold text-xl theme-text-primary mb-2 group-hover:text-electric dark:group-hover:text-cyanNeon transition-colors">
+                Landing Pages de Alta Conversión
+              </h3>
+              <p class="theme-text-secondary text-sm leading-relaxed mb-4">
+                Páginas de aterrizaje diseñadas estratégicamente para captar clientes, validar productos o lanzar campañas con tiempos de carga inferiores a 1 segundo y máxima tasa de conversión.
+              </p>
+              <ul class="space-y-1.5 text-xs theme-text-muted mb-4 font-mono">
+                <li class="flex items-center gap-2"><span class="theme-cyan">✓</span> 100% Adaptable a Celulares y PC</li>
+                <li class="flex items-center gap-2"><span class="theme-cyan">✓</span> Optimización de SEO Técnico y Velocidad</li>
+                <li class="flex items-center gap-2"><span class="theme-cyan">✓</span> Integración con WhatsApp y Formularios</li>
+              </ul>
+            </div>
+            <div class="px-6 pb-6 pt-2 border-t theme-border flex items-center justify-between text-xs font-mono theme-text-muted">
+              <span>React / Tailwind CSS</span>
+              <a href="#contacto" class="theme-cyan hover:underline inline-flex items-center gap-1 font-semibold">Cotizar →</a>
             </div>
           </article>
 
-          <!-- Tarjeta 2 -->
-          <article class="service-card cyber-card rounded-2xl p-7 flex flex-col justify-between group relative overflow-hidden">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-electric/15 border border-electric/40 flex items-center justify-center theme-cyan mb-6 group-hover:scale-110 transition-transform">
-                <svg aria-hidden="true" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
-                </svg>
-              </div>
-              <span class="font-mono text-xs theme-cyan uppercase tracking-wider">iOS &amp; Android</span>
-              <h3 class="font-display font-bold text-xl theme-text-primary mt-1.5 mb-3 group-hover:text-electric dark:group-hover:text-cyanNeon transition-colors">
+          <!-- Tarjeta 2: Sistemas Corporativos -->
+          <article class="service-card cyber-card rounded-2xl overflow-hidden flex flex-col justify-between group">
+            <div class="relative h-48 w-full overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" 
+                alt="Sistemas corporativos y paneles de administración modernos"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-obsidian/85 backdrop-blur-md text-[10px] font-mono text-cyanNeon border border-cyanNeon/30">
+                Dashboards • ERP • CRM
+              </span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display font-bold text-xl theme-text-primary mb-2 group-hover:text-electric dark:group-hover:text-cyanNeon transition-colors">
+                Sistemas Corporativos &amp; Paneles
+              </h3>
+              <p class="theme-text-secondary text-sm leading-relaxed mb-4">
+                Plataformas administrativas y paneles de control empresarial para gestionar operaciones, usuarios, inventarios o métricas en tiempo real con control de roles y permisos.
+              </p>
+              <ul class="space-y-1.5 text-xs theme-text-muted mb-4 font-mono">
+                <li class="flex items-center gap-2"><span class="theme-cyan">✓</span> Gestión de Usuarios, Roles y Seguridad</li>
+                <li class="flex items-center gap-2"><span class="theme-cyan">✓</span> Reportes y Gráficos Interactivos</li>
+                <li class="flex items-center gap-2"><span class="theme-cyan">✓</span> Exportación a Excel, PDF y APIs</li>
+              </ul>
+            </div>
+            <div class="px-6 pb-6 pt-2 border-t theme-border flex items-center justify-between text-xs font-mono theme-text-muted">
+              <span>React / Angular / SaaS</span>
+              <a href="#contacto" class="theme-cyan hover:underline inline-flex items-center gap-1 font-semibold">Cotizar →</a>
+            </div>
+          </article>
+
+          <!-- Tarjeta 3: Software a la Medida -->
+          <article class="service-card cyber-card rounded-2xl overflow-hidden flex flex-col justify-between group">
+            <div class="relative h-48 w-full overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" 
+                alt="Desarrollo de software a medida con código limpio y arquitectura modular"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-obsidian/85 backdrop-blur-md text-[10px] font-mono text-cyanNeon border border-cyanNeon/30">
+                100% Personalizado
+              </span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display font-bold text-xl theme-text-primary mb-2 group-hover:text-electric dark:group-hover:text-cyanNeon transition-colors">
+                Software a la Medida &amp; Automatización
+              </h3>
+              <p class="theme-text-secondary text-sm leading-relaxed mb-4">
+                ¿Tu empresa tiene un flujo de trabajo único que ningún software genérico resuelve? Programamos la solución exacta a tus procesos, automatizando tareas repetitivas.
+              </p>
+              <ul class="space-y-1.5 text-xs theme-text-muted mb-4 font-mono">
+                <li class="flex items-center gap-2"><span class="theme-cyan">✓</span> Digitalización de Procesos Manuales</li>
+                <li class="flex items-center gap-2"><span class="theme-cyan">✓</span> Reglas de Negocio 100% a tu Medida</li>
+                <li class="flex items-center gap-2"><span class="theme-cyan">✓</span> Escalabilidad sin pagos mensuales de licencias</li>
+              </ul>
+            </div>
+            <div class="px-6 pb-6 pt-2 border-t theme-border flex items-center justify-between text-xs font-mono theme-text-muted">
+              <span>TypeScript / Node / Spring</span>
+              <a href="#contacto" class="theme-cyan hover:underline inline-flex items-center gap-1 font-semibold">Cotizar →</a>
+            </div>
+          </article>
+
+          <!-- Tarjeta 4: Aplicaciones Móviles -->
+          <article class="service-card cyber-card rounded-2xl overflow-hidden flex flex-col justify-between group">
+            <div class="relative h-48 w-full overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80" 
+                alt="Aplicaciones móviles para iOS y Android con interfaz táctil fluida"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-obsidian/85 backdrop-blur-md text-[10px] font-mono text-cyanNeon border border-cyanNeon/30">
+                iOS &amp; Android Nativo
+              </span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display font-bold text-xl theme-text-primary mb-2 group-hover:text-electric dark:group-hover:text-cyanNeon transition-colors">
                 Aplicaciones Móviles Multiplataforma
               </h3>
-              <p class="theme-text-secondary text-sm leading-relaxed mb-6">
-                Desarrollamos apps móviles fluidas e intuitivas para iOS y Android con React Native, listas para publicar en tiendas y conectadas en tiempo real con tu negocio.
+              <p class="theme-text-secondary text-sm leading-relaxed mb-4">
+                Desarrollo de apps en React Native para publicar en App Store y Google Play con una sola base de código, reduciendo costos a la mitad y acelerando el lanzamiento.
               </p>
+              <ul class="space-y-1.5 text-xs theme-text-muted mb-4 font-mono">
+                <li class="flex items-center gap-2"><span class="theme-cyan">✓</span> Notificaciones Push en Tiempo Real</li>
+                <li class="flex items-center gap-2"><span class="theme-cyan">✓</span> Acceso a Cámara, GPS y Huella/FaceID</li>
+                <li class="flex items-center gap-2"><span class="theme-cyan">✓</span> Funcionamiento Fluido con Modo Offline</li>
+              </ul>
             </div>
-            <div class="pt-4 border-t theme-border flex items-center justify-between text-xs font-mono theme-text-muted">
-              <span translate="no">React Native / iOS &amp; Android</span>
-              <a href="#contacto" class="theme-cyan hover:underline inline-flex items-center gap-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">Cotizar →</a>
+            <div class="px-6 pb-6 pt-2 border-t theme-border flex items-center justify-between text-xs font-mono theme-text-muted">
+              <span>React Native / Expo</span>
+              <a href="#contacto" class="theme-cyan hover:underline inline-flex items-center gap-1 font-semibold">Cotizar →</a>
             </div>
           </article>
 
-          <!-- Tarjeta 3 -->
-          <article class="service-card cyber-card rounded-2xl p-7 flex flex-col justify-between group relative overflow-hidden">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-electric/15 border border-electric/40 flex items-center justify-center theme-cyan mb-6 group-hover:scale-110 transition-transform">
-                <svg aria-hidden="true" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
-                </svg>
-              </div>
-              <span class="font-mono text-xs theme-cyan uppercase tracking-wider">Gestión &amp; Productividad</span>
-              <h3 class="font-display font-bold text-xl theme-text-primary mt-1.5 mb-3 group-hover:text-electric dark:group-hover:text-cyanNeon transition-colors">
-                Sistemas Web a la Medida &amp; SaaS
-              </h3>
-              <p class="theme-text-secondary text-sm leading-relaxed mb-6">
-                Plataformas administrativas, paneles de control (dashboards), gestión de clientes y sistemas internos construidos exactamente según las reglas de tu negocio.
-              </p>
+          <!-- Tarjeta 5: E-Commerce y POS -->
+          <article class="service-card cyber-card rounded-2xl overflow-hidden flex flex-col justify-between group">
+            <div class="relative h-48 w-full overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1556742049-0a67e557224e?auto=format&fit=crop&w=800&q=80" 
+                alt="Tiendas virtuales de e-commerce y sistemas de pago integrados"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-obsidian/85 backdrop-blur-md text-[10px] font-mono text-cyanNeon border border-cyanNeon/30">
+                Pagos • POS • Ventas
+              </span>
             </div>
-            <div class="pt-4 border-t theme-border flex items-center justify-between text-xs font-mono theme-text-muted">
-              <span translate="no">React / Angular / SaaS</span>
-              <a href="#contacto" class="theme-cyan hover:underline inline-flex items-center gap-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">Cotizar →</a>
+            <div class="p-6">
+              <h3 class="font-display font-bold text-xl theme-text-primary mb-2 group-hover:text-electric dark:group-hover:text-cyanNeon transition-colors">
+                E-Commerce &amp; Puntos de Venta (POS)
+              </h3>
+              <p class="theme-text-secondary text-sm leading-relaxed mb-4">
+                Tiendas virtuales modernas y software táctil para puntos de venta físico o quioscos interactivos, integrados con pasarelas de pago y facturación.
+              </p>
+              <ul class="space-y-1.5 text-xs theme-text-muted mb-4 font-mono">
+                <li class="flex items-center gap-2"><span class="theme-cyan">✓</span> Pasarelas de Pago (Stripe, Wompi, MercadoPago)</li>
+                <li class="flex items-center gap-2"><span class="theme-cyan">✓</span> Control de Inventario y Carrito Seguro</li>
+                <li class="flex items-center gap-2"><span class="theme-cyan">✓</span> Panel de Gestión de Pedidos y Envíos</li>
+              </ul>
+            </div>
+            <div class="px-6 pb-6 pt-2 border-t theme-border flex items-center justify-between text-xs font-mono theme-text-muted">
+              <span>Checkout / POS / APIs</span>
+              <a href="#contacto" class="theme-cyan hover:underline inline-flex items-center gap-1 font-semibold">Cotizar →</a>
             </div>
           </article>
 
-          <!-- Tarjeta 4 -->
-          <article class="service-card cyber-card rounded-2xl p-7 flex flex-col justify-between group relative overflow-hidden">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-electric/15 border border-electric/40 flex items-center justify-center theme-cyan mb-6 group-hover:scale-110 transition-transform">
-                <svg aria-hidden="true" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
-                </svg>
-              </div>
-              <span class="font-mono text-xs theme-cyan uppercase tracking-wider">Ventas &amp; Comercio Digital</span>
-              <h3 class="font-display font-bold text-xl theme-text-primary mt-1.5 mb-3 group-hover:text-electric dark:group-hover:text-cyanNeon transition-colors">
-                E-Commerce, POS &amp; Autoservicio
+          <!-- Tarjeta 6: Backend & APIs -->
+          <article class="service-card cyber-card rounded-2xl overflow-hidden flex flex-col justify-between group">
+            <div class="relative h-48 w-full overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" 
+                alt="Infraestructura de servidores en la nube y arquitectura backend"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+              <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-obsidian/85 backdrop-blur-md text-[10px] font-mono text-cyanNeon border border-cyanNeon/30">
+                APIs • SQL • Cloud
+              </span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display font-bold text-xl theme-text-primary mb-2 group-hover:text-electric dark:group-hover:text-cyanNeon transition-colors">
+                Desarrollo Backend &amp; APIs Seguras
               </h3>
-              <p class="theme-text-secondary text-sm leading-relaxed mb-6">
-                Tiendas virtuales integradas con pasarelas de pago, catálogos interactivos, sistemas de punto de venta (POS) e interfaces para quioscos de atención.
+              <p class="theme-text-secondary text-sm leading-relaxed mb-4">
+                El motor invisible pero crucial de tu software. Construimos APIs RESTful rápidas y seguras con bases de datos relacionales bien estructuradas en PostgreSQL y MySQL.
               </p>
+              <ul class="space-y-1.5 text-xs theme-text-muted mb-4 font-mono">
+                <li class="flex items-center gap-2"><span class="theme-cyan">✓</span> Java Spring Boot, Laravel y Node.js</li>
+                <li class="flex items-center gap-2"><span class="theme-cyan">✓</span> Autenticación JWT y Cifrado de Datos</li>
+                <li class="flex items-center gap-2"><span class="theme-cyan">✓</span> Conexión con Servicios de Terceros</li>
+              </ul>
             </div>
-            <div class="pt-4 border-t theme-border flex items-center justify-between text-xs font-mono theme-text-muted">
-              <span>E-Commerce / POS / Pagos</span>
-              <a href="#contacto" class="theme-cyan hover:underline inline-flex items-center gap-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">Cotizar →</a>
-            </div>
-          </article>
-
-          <!-- Tarjeta 5 -->
-          <article class="service-card cyber-card rounded-2xl p-7 flex flex-col justify-between group relative overflow-hidden">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-electric/15 border border-electric/40 flex items-center justify-center theme-cyan mb-6 group-hover:scale-110 transition-transform">
-                <svg aria-hidden="true" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
-                </svg>
-              </div>
-              <span class="font-mono text-xs theme-cyan uppercase tracking-wider">Centrado en las Personas</span>
-              <h3 class="font-display font-bold text-xl theme-text-primary mt-1.5 mb-3 group-hover:text-electric dark:group-hover:text-cyanNeon transition-colors">
-                Experiencia de Usuario (UX/UI) &amp; Modernización
-              </h3>
-              <p class="theme-text-secondary text-sm leading-relaxed mb-6">
-                Rediseñamos y modernizamos aplicaciones existentes para que sean intuitivas, rápidas y agradables de usar, reduciendo errores operativos y tiempos de carga.
-              </p>
-            </div>
-            <div class="pt-4 border-t theme-border flex items-center justify-between text-xs font-mono theme-text-muted">
-              <span>Diseño UI/UX / Prototipado</span>
-              <a href="#contacto" class="theme-cyan hover:underline inline-flex items-center gap-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">Cotizar →</a>
-            </div>
-          </article>
-
-          <!-- Tarjeta 6 -->
-          <article class="service-card cyber-card rounded-2xl p-7 flex flex-col justify-between group relative overflow-hidden">
-            <div>
-              <div class="w-12 h-12 rounded-xl bg-electric/15 border border-electric/40 flex items-center justify-center theme-cyan mb-6 group-hover:scale-110 transition-transform">
-                <svg aria-hidden="true" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z" />
-                </svg>
-              </div>
-              <span class="font-mono text-xs theme-cyan uppercase tracking-wider">APIs • Bases de Datos • Backend</span>
-              <h3 class="font-display font-bold text-xl theme-text-primary mt-1.5 mb-3 group-hover:text-electric dark:group-hover:text-cyanNeon transition-colors">
-                Desarrollo Backend, APIs &amp; Bases de Datos
-              </h3>
-              <p class="theme-text-secondary text-sm leading-relaxed mb-6">
-                Construcción de servicios backend seguros y escalables en Java Spring Boot, Laravel y Node.js, con bases de datos relacionales optimizadas en PostgreSQL y MySQL.
-              </p>
-            </div>
-            <div class="pt-4 border-t theme-border flex items-center justify-between text-xs font-mono theme-text-muted">
-              <span translate="no">Spring Boot / Laravel / Node.js</span>
-              <a href="#contacto" class="theme-cyan hover:underline inline-flex items-center gap-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">Cotizar →</a>
+            <div class="px-6 pb-6 pt-2 border-t theme-border flex items-center justify-between text-xs font-mono theme-text-muted">
+              <span>Spring / Laravel / SQL</span>
+              <a href="#contacto" class="theme-cyan hover:underline inline-flex items-center gap-1 font-semibold">Cotizar →</a>
             </div>
           </article>
 
@@ -590,17 +688,147 @@
     </section>
 
     <!-- ==========================================
-         4. NUESTRO ENFOQUE + DEMOSTRADOR INTERACTIVO DE SOLUCIONES REALES
-         (Reemplaza el gráfico abstracto por un simulador interactivo de Apps, Web SaaS y APIs)
+         4. NUEVA SECCIÓN: DESARROLLOS Y PROYECTOS QUE HACEMOS
     =========================================== -->
-    <section id="nosotros" class="relative py-24 lg:py-32 theme-bg-primary border-t theme-border overflow-hidden">
+    <section id="desarrollos" class="relative py-24 lg:py-32 theme-bg-primary border-t theme-border overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="section-header text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyanNeon/10 border border-cyanNeon/30 theme-cyan font-mono text-xs uppercase tracking-widest mb-4">
+            <span>// 02. DESARROLLOS EN PRÁCTICA</span>
+          </div>
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl theme-text-primary tracking-tight mb-4">
+            ¿Qué tipo de proyectos <span class="theme-cyan">construimos?</span>
+          </h2>
+          <p class="theme-text-secondary text-base sm:text-lg">
+            Casos de uso reales que desarrollamos habitualmente para empresas, emprendedores y profesionales que buscan soluciones a medida de alta calidad.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- Caso 1: Landing Page Corporativa -->
+          <div class="cyber-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between group">
+            <div class="space-y-4">
+              <div class="relative h-56 rounded-2xl overflow-hidden border theme-border">
+                <img 
+                  src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1000&q=80" 
+                  alt="Landing Page profesional con diseño minimalista y botones de contacto directo"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                <div class="absolute bottom-3 left-3 text-white font-mono text-xs flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Landing Page de Servicios Profesionales
+                </div>
+              </div>
+              <h3 class="font-display font-bold text-2xl theme-text-primary">Landing Pages de Presentación &amp; Ventas</h3>
+              <p class="theme-text-secondary text-sm leading-relaxed">
+                Sitios web rápidos creados para posicionar tu marca, presentar tu catálogo de servicios y canalizar prospectos calificados directamente hacia WhatsApp o tu correo corporativo.
+              </p>
+            </div>
+            <div class="pt-5 mt-5 border-t theme-border flex flex-wrap gap-2 text-xs font-mono theme-text-muted">
+              <span class="px-3 py-1 rounded-lg theme-bg-tertiary">Diseño Responsive</span>
+              <span class="px-3 py-1 rounded-lg theme-bg-tertiary">SEO On-Page</span>
+              <span class="px-3 py-1 rounded-lg theme-bg-tertiary">Copywriting</span>
+            </div>
+          </div>
+
+          <!-- Caso 2: Sistema Web Administrativo -->
+          <div class="cyber-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between group">
+            <div class="space-y-4">
+              <div class="relative h-56 rounded-2xl overflow-hidden border theme-border">
+                <img 
+                  src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=80" 
+                  alt="Panel de administración y sistema web corporativo a medida"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                <div class="absolute bottom-3 left-3 text-white font-mono text-xs flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-cyanNeon"></span> Sistema Web Corporativo / SaaS
+                </div>
+              </div>
+              <h3 class="font-display font-bold text-2xl theme-text-primary">Sistemas de Gestión &amp; Portales Internos</h3>
+              <p class="theme-text-secondary text-sm leading-relaxed">
+                Reemplazamos hojas de cálculo dispersas por plataformas web protegidas donde tu equipo puede registrar información, consultar historiales, emitir reportes y colaborar de forma ordenada.
+              </p>
+            </div>
+            <div class="pt-5 mt-5 border-t theme-border flex flex-wrap gap-2 text-xs font-mono theme-text-muted">
+              <span class="px-3 py-1 rounded-lg theme-bg-tertiary">Control de Acceso</span>
+              <span class="px-3 py-1 rounded-lg theme-bg-tertiary">Base de Datos SQL</span>
+              <span class="px-3 py-1 rounded-lg theme-bg-tertiary">Dashboards</span>
+            </div>
+          </div>
+
+          <!-- Caso 3: App Móvil para Clientes o Campo -->
+          <div class="cyber-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between group">
+            <div class="space-y-4">
+              <div class="relative h-56 rounded-2xl overflow-hidden border theme-border">
+                <img 
+                  src="https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1000&q=80" 
+                  alt="Aplicación móvil en smartphone para operaciones y usuarios"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                <div class="absolute bottom-3 left-3 text-white font-mono text-xs flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-electric"></span> React Native iOS &amp; Android
+                </div>
+              </div>
+              <h3 class="font-display font-bold text-2xl theme-text-primary">Aplicaciones Móviles de Negocio</h3>
+              <p class="theme-text-secondary text-sm leading-relaxed">
+                Apps móviles diseñadas para conectar con tus clientes finales o para el personal en campo (toma de pedidos, registro de visitas, inventario o seguimiento en tiempo real).
+              </p>
+            </div>
+            <div class="pt-5 mt-5 border-t theme-border flex flex-wrap gap-2 text-xs font-mono theme-text-muted">
+              <span class="px-3 py-1 rounded-lg theme-bg-tertiary">iOS &amp; Android</span>
+              <span class="px-3 py-1 rounded-lg theme-bg-tertiary">Modo Offline</span>
+              <span class="px-3 py-1 rounded-lg theme-bg-tertiary">Push Alerts</span>
+            </div>
+          </div>
+
+          <!-- Caso 4: Software a la Medida y Conexión de APIs -->
+          <div class="cyber-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between group">
+            <div class="space-y-4">
+              <div class="relative h-56 rounded-2xl overflow-hidden border theme-border">
+                <img 
+                  src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1000&q=80" 
+                  alt="Equipo diseñando arquitectura y flujo de software personalizado"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                <div class="absolute bottom-3 left-3 text-white font-mono text-xs flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Software 100% a la Medida
+                </div>
+              </div>
+              <h3 class="font-display font-bold text-2xl theme-text-primary">Desarrollo Especializado &amp; Conexión de Sistemas</h3>
+              <p class="theme-text-secondary text-sm leading-relaxed">
+                Integramos tus diferentes herramientas (pasarelas de pago, CRMs, mensajería WhatsApp, bases de datos) en una sola solución automatizada que ahorra horas de trabajo manual.
+              </p>
+            </div>
+            <div class="pt-5 mt-5 border-t theme-border flex flex-wrap gap-2 text-xs font-mono theme-text-muted">
+              <span class="px-3 py-1 rounded-lg theme-bg-tertiary">Integración APIs</span>
+              <span class="px-3 py-1 rounded-lg theme-bg-tertiary">Automatización</span>
+              <span class="px-3 py-1 rounded-lg theme-bg-tertiary">Código Propietario</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         5. NUESTRO ENFOQUE DE INGENIERÍA
+    =========================================== -->
+    <section id="nosotros" class="relative py-24 lg:py-32 theme-bg-secondary border-t theme-border overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          <!-- Columna Izquierda: Equipo Pequeño, Gran Calidad & UX (6 cols) -->
           <div class="lg:col-span-6 space-y-6">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyanNeon/10 border border-cyanNeon/30 theme-cyan font-mono text-xs uppercase tracking-widest">
-              <span>// 02. NUESTRA FILOSOFÍA DE TRABAJO</span>
+              <span>// 03. NUESTRA FILOSOFÍA</span>
             </div>
 
             <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl theme-text-primary tracking-tight leading-tight">
@@ -611,7 +839,6 @@
               En <strong class="theme-text-primary" translate="no">TGB Tech Studio</strong> creemos que el mejor software nace de un <span class="theme-cyan font-semibold">equipo cercano y comprometido</span> que cuida cada detalle. Hablas directamente con quienes diseñan y programan tu producto, logrando entregas ágiles, excelente experiencia de usuario y las mejores tecnologías modernas.
             </p>
 
-            <!-- Comparativa de Valor -->
             <div class="cyber-card rounded-2xl p-6 space-y-5 tabular-nums">
               <div>
                 <div class="flex justify-between text-xs font-mono mb-2">
@@ -650,178 +877,44 @@
             </div>
           </div>
 
-          <!-- Columna Derecha: Blueprint Interactivo de Ingeniería TGB (Sin métricas de ventas ficticias) (6 cols) -->
+          <!-- Columna Derecha: Tarjeta de Enfoque Práctico -->
           <div class="lg:col-span-6">
-            <div class="cyber-card rounded-3xl p-5 sm:p-6 border border-cyanNeon/30 shadow-glow-lg relative overflow-hidden">
-              
-              <!-- Barra Superior de la Ventana Interactiva -->
-              <div class="flex items-center justify-between pb-4 mb-4 border-b theme-border">
-                <div class="flex items-center gap-2">
-                  <span aria-hidden="true" class="w-3 h-3 rounded-full bg-red-500/80"></span>
-                  <span aria-hidden="true" class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
-                  <span aria-hidden="true" class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
-                  <span id="preview-filename" class="ml-2 font-mono text-xs theme-text-secondary" translate="no">arquitectura_web_ux.tsx</span>
+            <div class="cyber-card rounded-3xl p-6 sm:p-8 space-y-6">
+              <div class="flex items-center gap-4 pb-4 border-b theme-border">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-electric to-cyanNeon flex items-center justify-center text-white font-bold text-lg">
+                  TGB
                 </div>
-                <div class="flex items-center gap-2 font-mono text-[11px] theme-cyan bg-cyanNeon/10 px-2.5 py-1 rounded-md border border-cyanNeon/30">
-                  <span class="w-2 h-2 rounded-full bg-cyanNeon animate-ping"></span>
-                  <span>ESTÁNDAR TGB</span>
+                <div>
+                  <h3 class="font-display font-bold text-lg theme-text-primary">Metodología de Trabajo Ágil</h3>
+                  <p class="text-xs theme-text-muted">Resultados visibles desde la primera semana</p>
                 </div>
               </div>
 
-              <!-- Contenedor de Vistas de Ingeniería -->
-              <div class="relative min-h-[320px] w-full rounded-2xl theme-bg-tertiary border theme-border p-4 sm:p-5 flex flex-col justify-between overflow-hidden">
-                
-                <!-- VISTA 1: INGENIERÍA WEB & EXPERIENCIA DE USUARIO (UX/UI) -->
-                <div id="preview-saas" class="preview-pane space-y-4">
-                  <div class="flex items-center justify-between">
-                    <div>
-                      <span class="font-mono text-[10px] uppercase tracking-wider theme-cyan">01. Interfaces Modernas &amp; UX/UI</span>
-                      <h4 class="font-display font-bold text-base theme-text-primary">Cómo Construimos tu Plataforma Web</h4>
-                    </div>
-                    <span class="px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-500 font-mono text-[11px]">● Clean UI</span>
-                  </div>
-
-                  <!-- Pilares de Calidad Frontend -->
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div class="p-3.5 rounded-xl theme-bg-secondary border theme-border flex items-start gap-3">
-                      <div class="w-8 h-8 rounded-lg bg-electric/15 border border-electric/30 flex items-center justify-center theme-cyan shrink-0 mt-0.5">
-                        <svg aria-hidden="true" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p class="font-display font-bold text-xs theme-text-primary">Diseño Intuitivo</p>
-                        <p class="text-[11px] theme-text-muted mt-0.5 leading-snug">Interfaces pensadas para que cualquier usuario las entienda sin fricción.</p>
-                      </div>
-                    </div>
-
-                    <div class="p-3.5 rounded-xl theme-bg-secondary border theme-border flex items-start gap-3">
-                      <div class="w-8 h-8 rounded-lg bg-cyanNeon/15 border border-cyanNeon/30 flex items-center justify-center theme-cyan shrink-0 mt-0.5">
-                        <svg aria-hidden="true" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p class="font-display font-bold text-xs theme-text-primary">Carga Ultrarrápida</p>
-                        <p class="text-[11px] theme-text-muted mt-0.5 leading-snug">Componentes optimizados en React y Angular con tiempos de respuesta inmediatos.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Estructura Modular de Componentes -->
-                  <div class="p-3.5 rounded-xl theme-bg-secondary border theme-border space-y-2.5">
-                    <div class="flex items-center justify-between text-xs">
-                      <span class="font-medium theme-text-primary">Arquitectura de Componentes Reutilizables</span>
-                      <span class="font-mono text-[11px] theme-cyan" translate="no">React • Angular • Tailwind</span>
-                    </div>
-                    <div class="grid grid-cols-3 gap-2 pt-1 text-center font-mono text-[11px]">
-                      <div class="p-2 rounded-lg theme-bg-tertiary border theme-border theme-text-secondary">
-                        Diseño Adaptable (Móvil / PC)
-                      </div>
-                      <div class="p-2 rounded-lg theme-bg-tertiary border theme-border theme-text-secondary">
-                        Accesibilidad &amp; SEO
-                      </div>
-                      <div class="p-2 rounded-lg theme-bg-tertiary border theme-border theme-cyan font-semibold">
-                        Código Mantenible
-                      </div>
-                    </div>
+              <div class="space-y-4">
+                <div class="p-4 rounded-2xl theme-bg-tertiary border theme-border flex items-start gap-4">
+                  <span class="w-8 h-8 rounded-xl bg-electric/15 text-electric font-mono font-bold text-xs flex items-center justify-center shrink-0">01</span>
+                  <div>
+                    <h4 class="font-display font-bold text-sm theme-text-primary">Diagnóstico Claro &amp; Sin Sorpresas</h4>
+                    <p class="text-xs theme-text-secondary mt-1">Definimos los objetivos exactos, entregables y costos antes de escribir una sola línea de código.</p>
                   </div>
                 </div>
 
-                <!-- VISTA 2: APLICACIÓN MÓVIL (iOS & ANDROID) -->
-                <div id="preview-mobile" class="preview-pane hidden space-y-4">
-                  <div class="flex items-center justify-between">
-                    <div>
-                      <span class="font-mono text-[10px] uppercase tracking-wider theme-cyan">02. Desarrollo Móvil Multiplataforma</span>
-                      <h4 class="font-display font-bold text-base theme-text-primary">Apps Nativas para iOS &amp; Android</h4>
-                    </div>
-                    <span class="px-2.5 py-1 rounded-full bg-electric/15 text-electric font-mono text-[11px]">React Native</span>
-                  </div>
-
-                  <!-- Esquema de Capacidades Móviles -->
-                  <div class="p-4 rounded-2xl theme-bg-secondary border theme-border space-y-3.5">
-                    <div class="flex items-center gap-3 pb-3 border-b theme-border">
-                      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-electric to-cyanNeon text-white flex items-center justify-center font-bold text-xs shrink-0">
-                        RN
-                      </div>
-                      <div>
-                        <p class="text-xs font-bold theme-text-primary">Un Solo Código Base • Doble Plataforma</p>
-                        <p class="text-[11px] theme-text-muted">Menor costo de mantenimiento y lanzamientos simultáneos en App Store y Google Play.</p>
-                      </div>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-2.5 text-xs">
-                      <div class="p-2.5 rounded-xl theme-bg-tertiary border theme-border flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-cyanNeon shrink-0"></span>
-                        <span class="theme-text-primary font-medium">Navegación Fluida 60 FPS</span>
-                      </div>
-                      <div class="p-2.5 rounded-xl theme-bg-tertiary border theme-border flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-electric shrink-0"></span>
-                        <span class="theme-text-primary font-medium">Notificaciones Push</span>
-                      </div>
-                      <div class="p-2.5 rounded-xl theme-bg-tertiary border theme-border flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
-                        <span class="theme-text-primary font-medium">Cámara, GPS &amp; Biometría</span>
-                      </div>
-                      <div class="p-2.5 rounded-xl theme-bg-tertiary border theme-border flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-cyanNeon shrink-0"></span>
-                        <span class="theme-text-primary font-medium">Soporte Offline Seguro</span>
-                      </div>
-                    </div>
+                <div class="p-4 rounded-2xl theme-bg-tertiary border theme-border flex items-start gap-4">
+                  <span class="w-8 h-8 rounded-xl bg-cyanNeon/15 theme-cyan font-mono font-bold text-xs flex items-center justify-center shrink-0">02</span>
+                  <div>
+                    <h4 class="font-display font-bold text-sm theme-text-primary">Demostraciones Semanales</h4>
+                    <p class="text-xs theme-text-secondary mt-1">Acceso a un entorno de pruebas privado para que pruebes los avances reales cada semana.</p>
                   </div>
                 </div>
 
-                <!-- VISTA 3: ARQUITECTURA BACKEND & APIs -->
-                <div id="preview-backend" class="preview-pane hidden space-y-4">
-                  <div class="flex items-center justify-between">
-                    <div>
-                      <span class="font-mono text-[10px] uppercase tracking-wider theme-cyan">03. Ingeniería Backend &amp; Datos</span>
-                      <h4 class="font-display font-bold text-base theme-text-primary">Arquitectura Limpia &amp; APIs Seguras</h4>
-                    </div>
-                    <span class="px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-500 font-mono text-[11px]">Clean Code</span>
-                  </div>
-
-                  <!-- Diagrama Interactivo de Flujo Backend -->
-                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 items-center pt-1">
-                    <div class="p-3 rounded-xl theme-bg-secondary border theme-border text-center space-y-1">
-                      <span class="font-mono text-[10px] theme-cyan block">CAPA PRESENTACIÓN</span>
-                      <p class="font-display font-bold text-xs theme-text-primary">Web / App Móvil</p>
-                      <span class="text-[10px] theme-text-muted block" translate="no">React • Angular • RN</span>
-                    </div>
-                    <div class="p-3 rounded-xl theme-bg-secondary border-2 border-electric/50 text-center space-y-1">
-                      <span class="font-mono text-[10px] text-electric font-bold block">CAPA DE NEGOCIO</span>
-                      <p class="font-display font-bold text-xs theme-text-primary">API REST &amp; Auth</p>
-                      <span class="text-[10px] theme-text-muted block" translate="no">Spring • Laravel • Node</span>
-                    </div>
-                    <div class="p-3 rounded-xl theme-bg-secondary border theme-border text-center space-y-1">
-                      <span class="font-mono text-[10px] theme-cyan block">CAPA DE DATOS</span>
-                      <p class="font-display font-bold text-xs theme-text-primary">Base de Datos SQL</p>
-                      <span class="text-[10px] theme-text-muted block" translate="no">PostgreSQL • MySQL</span>
-                    </div>
-                  </div>
-
-                  <!-- Snippet de Arquitectura -->
-                  <div class="p-3 rounded-xl bg-slate-950 text-slate-200 font-mono text-[11px] border border-slate-800 overflow-x-auto" translate="no">
-                    <p class="text-cyanNeon">// Arquitectura desacoplada, segura y lista para escalar</p>
-                    <p>{ <span class="text-blue-400">"architecture"</span>: <span class="text-emerald-400">"Clean_Layered_API"</span>, <span class="text-blue-400">"auth"</span>: <span class="text-amber-300">"JWT_OAuth2"</span>, <span class="text-blue-400">"db"</span>: <span class="text-emerald-400">"ACID_Compliant"</span> }</p>
+                <div class="p-4 rounded-2xl theme-bg-tertiary border theme-border flex items-start gap-4">
+                  <span class="w-8 h-8 rounded-xl bg-emerald-500/15 text-emerald-500 font-mono font-bold text-xs flex items-center justify-center shrink-0">03</span>
+                  <div>
+                    <h4 class="font-display font-bold text-sm theme-text-primary">Entrega Final con Capacitación &amp; Soporte</h4>
+                    <p class="text-xs theme-text-secondary mt-1">Despliegue en producción, capacitación para tu equipo y garantía técnica post-entrega.</p>
                   </div>
                 </div>
-
               </div>
-
-              <!-- Botones para Alternar entre Pilares -->
-              <div class="mt-5 grid grid-cols-3 gap-2.5" role="tablist" aria-label="Explorar pilares de ingeniería de TGB Tech Studio">
-                <button type="button" data-preview="saas" data-file="arquitectura_web_ux.tsx" aria-selected="true" class="preview-tab px-3 py-2.5 rounded-xl font-mono text-xs font-medium bg-electric text-white border border-blue-400/40 shadow-glow-blue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">
-                  1. Web &amp; UX/UI
-                </button>
-                <button type="button" data-preview="mobile" data-file="arquitectura_movil.tsx" aria-selected="false" class="preview-tab px-3 py-2.5 rounded-xl font-mono text-xs font-medium theme-bg-secondary theme-text-secondary border theme-border hover:border-cyanNeon/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">
-                  2. Apps Móviles
-                </button>
-                <button type="button" data-preview="backend" data-file="arquitectura_backend.java" aria-selected="false" class="preview-tab px-3 py-2.5 rounded-xl font-mono text-xs font-medium theme-bg-secondary theme-text-secondary border theme-border hover:border-cyanNeon/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">
-                  3. Backend &amp; APIs
-                </button>
-              </div>
-
             </div>
           </div>
 
@@ -830,15 +923,14 @@
     </section>
 
     <!-- ==========================================
-         5. STACK TECNOLÓGICO Y ARQUITECTURA (AMPLIADO Y MÁS COMPLETO)
+         6. STACK TECNOLÓGICO Y HERRAMIENTAS
     =========================================== -->
-    <section id="tecnologias" class="relative py-24 lg:py-32 theme-bg-secondary border-t theme-border">
+    <section id="tecnologias" class="relative py-24 lg:py-32 theme-bg-primary border-t theme-border">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <!-- Encabezado -->
         <div class="section-header text-center max-w-3xl mx-auto mb-12">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-electric/10 border border-electric/30 theme-cyan font-mono text-xs uppercase tracking-widest mb-4">
-            <span>// 03. HERRAMIENTAS &amp; TECNOLOGÍAS</span>
+            <span>// 04. HERRAMIENTAS &amp; TECNOLOGÍAS</span>
           </div>
           <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl theme-text-primary tracking-tight mb-4">
             Las Mejores Tecnologías para <span class="theme-cyan">Productos Modernos</span>
@@ -848,34 +940,34 @@
           </p>
         </div>
 
-        <!-- Pestañas de Filtrado por Capas -->
-        <div class="flex flex-wrap items-center justify-center gap-2.5 mb-12" role="tablist" aria-label="Filtrar tecnologías por especialidad">
-          <button type="button" role="tab" aria-selected="true" data-filter="all" class="stack-tab px-5 py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider bg-electric text-white border border-blue-400/40 shadow-glow-blue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">
-            Todas las Áreas (4)
+        <!-- Pestañas de Filtrado -->
+        <div class="flex flex-wrap items-center justify-center gap-2.5 mb-12" role="tablist">
+          <button type="button" role="tab" aria-selected="true" data-filter="all" class="stack-tab px-5 py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider bg-electric text-white border border-blue-400/40 shadow-glow-blue transition-colors focus-visible:outline-none">
+            Todas las Áreas
           </button>
-          <button type="button" role="tab" aria-selected="false" data-filter="frontend" class="stack-tab px-5 py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider theme-bg-primary theme-text-secondary border theme-border hover:border-cyanNeon/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">
-            01. Frontend Web
+          <button type="button" role="tab" aria-selected="false" data-filter="frontend" class="stack-tab px-5 py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider theme-bg-secondary theme-text-secondary border theme-border hover:border-cyanNeon/50 transition-colors focus-visible:outline-none">
+            Frontend Web
           </button>
-          <button type="button" role="tab" aria-selected="false" data-filter="mobile" class="stack-tab px-5 py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider theme-bg-primary theme-text-secondary border theme-border hover:border-cyanNeon/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">
-            02. Apps Móviles &amp; UX/UI
+          <button type="button" role="tab" aria-selected="false" data-filter="mobile" class="stack-tab px-5 py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider theme-bg-secondary theme-text-secondary border theme-border hover:border-cyanNeon/50 transition-colors focus-visible:outline-none">
+            Apps Móviles
           </button>
-          <button type="button" role="tab" aria-selected="false" data-filter="backend" class="stack-tab px-5 py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider theme-bg-primary theme-text-secondary border theme-border hover:border-cyanNeon/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">
-            03. Backend &amp; APIs
+          <button type="button" role="tab" aria-selected="false" data-filter="backend" class="stack-tab px-5 py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider theme-bg-secondary theme-text-secondary border theme-border hover:border-cyanNeon/50 transition-colors focus-visible:outline-none">
+            Backend &amp; APIs
           </button>
-          <button type="button" role="tab" aria-selected="false" data-filter="data" class="stack-tab px-5 py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider theme-bg-primary theme-text-secondary border theme-border hover:border-cyanNeon/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">
-            04. Bases de Datos &amp; Cloud
+          <button type="button" role="tab" aria-selected="false" data-filter="data" class="stack-tab px-5 py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider theme-bg-secondary theme-text-secondary border theme-border hover:border-cyanNeon/50 transition-colors focus-visible:outline-none">
+            Bases de Datos &amp; Cloud
           </button>
         </div>
 
-        <!-- Contenedor Ampliado de 4 Capas Arquitectónicas -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        <!-- Grid de Capas Tecnológicas -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           
-          <!-- Capa 1: Frontend Web Moderno -->
+          <!-- Capa 1: Frontend Web -->
           <div data-category="frontend" class="stack-layer cyber-card rounded-2xl p-7 border-t-2 border-t-cyanNeon flex flex-col justify-between">
             <div>
               <div class="flex items-center justify-between mb-5">
                 <div>
-                  <span class="font-mono text-xs theme-cyan uppercase tracking-widest">CAPA 01 • INTERFACES WEB</span>
+                  <span class="font-mono text-xs theme-cyan uppercase tracking-widest">CAPA 01 • WEB</span>
                   <h3 class="font-display font-bold text-2xl theme-text-primary mt-1">Frontend Web Moderno</h3>
                 </div>
                 <div class="w-11 h-11 rounded-xl bg-cyanNeon/10 border border-cyanNeon/30 flex items-center justify-center theme-cyan shrink-0">
@@ -885,29 +977,23 @@
                 </div>
               </div>
               <p class="theme-text-secondary text-sm mb-6 leading-relaxed">
-                Construimos aplicaciones web rápidas, modulares y adaptables a cualquier pantalla utilizando componentes reutilizables y tipado estricto.
+                Construimos interfaces web rápidas, modulares y adaptables a cualquier pantalla utilizando componentes reutilizables y tipado estricto.
               </p>
               <div class="flex flex-wrap gap-2.5 mb-6" translate="no">
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-cyanNeon text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
+                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border text-sm font-medium theme-text-primary flex items-center gap-2">
                   <span class="w-2 h-2 rounded-full bg-cyanNeon"></span> React.js
                 </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-cyanNeon text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
+                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border text-sm font-medium theme-text-primary flex items-center gap-2">
                   <span class="w-2 h-2 rounded-full bg-electric"></span> Angular
                 </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-cyanNeon text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
+                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border text-sm font-medium theme-text-primary flex items-center gap-2">
                   <span class="w-2 h-2 rounded-full bg-cyanNeon"></span> Next.js
                 </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-cyanNeon text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
+                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border text-sm font-medium theme-text-primary flex items-center gap-2">
                   <span class="w-2 h-2 rounded-full bg-electric"></span> TypeScript
                 </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-cyanNeon text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
-                  <span class="w-2 h-2 rounded-full bg-cyanNeon"></span> JavaScript (ES6+)
-                </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-cyanNeon text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
+                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border text-sm font-medium theme-text-primary flex items-center gap-2">
                   <span class="w-2 h-2 rounded-full bg-electric"></span> Tailwind CSS
-                </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-cyanNeon text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
-                  <span class="w-2 h-2 rounded-full bg-cyanNeon"></span> HTML5 &amp; CSS3
                 </span>
               </div>
             </div>
@@ -917,13 +1003,13 @@
             </div>
           </div>
 
-          <!-- Capa 2: Desarrollo Móvil & Diseño UX/UI -->
+          <!-- Capa 2: Apps Móviles -->
           <div data-category="mobile" class="stack-layer cyber-card rounded-2xl p-7 border-t-2 border-t-electric flex flex-col justify-between">
             <div>
               <div class="flex items-center justify-between mb-5">
                 <div>
-                  <span class="font-mono text-xs text-electric uppercase tracking-widest">CAPA 02 • MOVILIDAD &amp; DISEÑO</span>
-                  <h3 class="font-display font-bold text-2xl theme-text-primary mt-1">Apps Móviles &amp; Experiencia UX/UI</h3>
+                  <span class="font-mono text-xs text-electric uppercase tracking-widest">CAPA 02 • MÓVIL</span>
+                  <h3 class="font-display font-bold text-2xl theme-text-primary mt-1">Apps Móviles &amp; UX/UI</h3>
                 </div>
                 <div class="w-11 h-11 rounded-xl bg-electric/15 border border-electric/40 flex items-center justify-center theme-cyan shrink-0">
                   <svg aria-hidden="true" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
@@ -932,41 +1018,35 @@
                 </div>
               </div>
               <p class="theme-text-secondary text-sm mb-6 leading-relaxed">
-                Diseñamos prototipos centrados en el usuario y desarrollamos aplicaciones móviles nativas y multiplataforma para iOS y Android con una sola base de código mantenible.
+                Diseñamos prototipos centrados en el usuario y desarrollamos aplicaciones móviles nativas y multiplataforma para iOS y Android con una sola base de código.
               </p>
-              <div class="flex flex-wrap gap-2.5 mb-6">
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-electric text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors" translate="no">
-                  <span class="w-2 h-2 rounded-full bg-cyanNeon"></span> React Native (iOS &amp; Android)
+              <div class="flex flex-wrap gap-2.5 mb-6" translate="no">
+                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border text-sm font-medium theme-text-primary flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-cyanNeon"></span> React Native
                 </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-electric text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors" translate="no">
-                  <span class="w-2 h-2 rounded-full bg-electric"></span> Expo Ecosystem
+                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border text-sm font-medium theme-text-primary flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-electric"></span> Expo
                 </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-electric text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
-                  <span class="w-2 h-2 rounded-full bg-cyanNeon"></span> Diseño UI/UX en Figma
+                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border text-sm font-medium theme-text-primary flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-cyanNeon"></span> Diseño Figma
                 </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-electric text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
-                  <span class="w-2 h-2 rounded-full bg-electric"></span> Prototipado Interactivo
-                </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-electric text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
-                  <span class="w-2 h-2 rounded-full bg-cyanNeon"></span> Notificaciones Push &amp; GPS
-                </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-electric text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
-                  <span class="w-2 h-2 rounded-full bg-electric"></span> Soporte Offline &amp; PWA
+                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border text-sm font-medium theme-text-primary flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-electric"></span> Push Notifications
                 </span>
               </div>
             </div>
             <div class="pt-4 border-t theme-border flex items-center justify-between text-xs font-mono theme-text-muted">
-              <span>App Store • Google Play • Sistemas de Diseño</span>
-              <span class="theme-cyan">Experiencia Intuitiva</span>
+              <span>App Store • Google Play</span>
+              <span class="theme-cyan">Experiencia Fluida</span>
             </div>
           </div>
 
-          <!-- Capa 3: Backend & APIs Escalables -->
+          <!-- Capa 3: Backend & APIs -->
           <div data-category="backend" class="stack-layer cyber-card rounded-2xl p-7 border-t-2 border-t-electric flex flex-col justify-between">
             <div>
               <div class="flex items-center justify-between mb-5">
                 <div>
-                  <span class="font-mono text-xs text-electric uppercase tracking-widest">CAPA 03 • LÓGICA DE NEGOCIO</span>
+                  <span class="font-mono text-xs text-electric uppercase tracking-widest">CAPA 03 • NEGOCIO</span>
                   <h3 class="font-display font-bold text-2xl theme-text-primary mt-1">Backend Sólido &amp; APIs</h3>
                 </div>
                 <div class="w-11 h-11 rounded-xl bg-electric/15 border border-electric/40 flex items-center justify-center theme-cyan shrink-0">
@@ -979,42 +1059,33 @@
                 Desarrollamos el corazón de tu plataforma con arquitecturas limpias, seguridad por roles, validación rigurosa de datos e integración con pasarelas de pago y servicios externos.
               </p>
               <div class="flex flex-wrap gap-2.5 mb-6" translate="no">
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-electric text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
+                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border text-sm font-medium theme-text-primary flex items-center gap-2">
                   <span class="w-2 h-2 rounded-full bg-electric"></span> Java Spring Boot
                 </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-electric text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
+                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border text-sm font-medium theme-text-primary flex items-center gap-2">
                   <span class="w-2 h-2 rounded-full bg-cyanNeon"></span> Laravel (PHP)
                 </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-electric text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
-                  <span class="w-2 h-2 rounded-full bg-electric"></span> Node.js
+                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border text-sm font-medium theme-text-primary flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-electric"></span> Node.js / Express
                 </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-electric text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
-                  <span class="w-2 h-2 rounded-full bg-cyanNeon"></span> Express.js
-                </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-electric text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
-                  <span class="w-2 h-2 rounded-full bg-electric"></span> APIs RESTful
-                </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-electric text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
-                  <span class="w-2 h-2 rounded-full bg-cyanNeon"></span> Autenticación JWT &amp; OAuth2
-                </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-electric text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
-                  <span class="w-2 h-2 rounded-full bg-electric"></span> WebSockets (Tiempo Real)
+                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border text-sm font-medium theme-text-primary flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-cyanNeon"></span> REST &amp; JWT
                 </span>
               </div>
             </div>
             <div class="pt-4 border-t theme-border flex items-center justify-between text-xs font-mono theme-text-muted">
-              <span>Clean Architecture • SOLID • Seguridad</span>
+              <span>Clean Architecture • SOLID</span>
               <span class="theme-cyan">Alta Disponibilidad</span>
             </div>
           </div>
 
-          <!-- Capa 4: Bases de Datos, Cloud & DevOps -->
+          <!-- Capa 4: Bases de Datos & Cloud -->
           <div data-category="data" class="stack-layer cyber-card rounded-2xl p-7 border-t-2 border-t-cyanNeon flex flex-col justify-between">
             <div>
               <div class="flex items-center justify-between mb-5">
                 <div>
                   <span class="font-mono text-xs theme-cyan uppercase tracking-widest">CAPA 04 • DATOS &amp; DESPLIEGUE</span>
-                  <h3 class="font-display font-bold text-2xl theme-text-primary mt-1">Bases de Datos, Cloud &amp; QA</h3>
+                  <h3 class="font-display font-bold text-2xl theme-text-primary mt-1">Bases de Datos &amp; Cloud</h3>
                 </div>
                 <div class="w-11 h-11 rounded-xl bg-cyanNeon/10 border border-cyanNeon/30 flex items-center justify-center theme-cyan shrink-0">
                   <svg aria-hidden="true" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
@@ -1026,158 +1097,28 @@
                 Modelado eficiente de bases de datos relacionales, contenedores reproducibles y despliegues seguros en la nube con copias de respaldo y monitoreo.
               </p>
               <div class="flex flex-wrap gap-2.5 mb-6" translate="no">
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-cyanNeon text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
+                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border text-sm font-medium theme-text-primary flex items-center gap-2">
                   <span class="w-2 h-2 rounded-full bg-cyanNeon"></span> PostgreSQL
                 </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-cyanNeon text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
+                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border text-sm font-medium theme-text-primary flex items-center gap-2">
                   <span class="w-2 h-2 rounded-full bg-electric"></span> MySQL
                 </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-cyanNeon text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
-                  <span class="w-2 h-2 rounded-full bg-cyanNeon"></span> Docker &amp; Containers
+                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border text-sm font-medium theme-text-primary flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-cyanNeon"></span> Docker
                 </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-cyanNeon text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
-                  <span class="w-2 h-2 rounded-full bg-electric"></span> Git, GitHub &amp; CI/CD
-                </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-cyanNeon text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
-                  <span class="w-2 h-2 rounded-full bg-cyanNeon"></span> AWS / DigitalOcean / Vercel
-                </span>
-                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border hover:border-cyanNeon text-sm font-medium theme-text-primary flex items-center gap-2 transition-colors">
-                  <span class="w-2 h-2 rounded-full bg-electric"></span> Linux &amp; Nginx
+                <span class="px-3.5 py-2 rounded-xl theme-bg-primary border theme-border text-sm font-medium theme-text-primary flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-electric"></span> Git &amp; CI/CD
                 </span>
               </div>
             </div>
             <div class="pt-4 border-t theme-border flex items-center justify-between text-xs font-mono theme-text-muted">
-              <span>Consultas Optimizadas • Backups • SSL</span>
+              <span>Consultas Optimizadas • SSL</span>
               <span class="theme-cyan">Infraestructura Confiable</span>
             </div>
           </div>
 
         </div>
 
-        <!-- Bloque Adicional: Estándares de Ingeniería que Aplicamos en Todo Proyecto -->
-        <div class="cyber-card rounded-2xl p-6 sm:p-8">
-          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 mb-6 border-b theme-border">
-            <div>
-              <span class="font-mono text-xs theme-cyan uppercase tracking-widest">GARANTÍA DE CALIDAD TGB</span>
-              <h3 class="font-display font-bold text-xl theme-text-primary mt-1">Estándares incluidos en cada desarrollo</h3>
-            </div>
-            <span class="font-mono text-xs theme-text-muted">100&nbsp;% Propiedad Intelectual del Cliente</span>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div class="flex items-start gap-3">
-              <div class="w-8 h-8 rounded-lg bg-electric/15 border border-electric/30 flex items-center justify-center theme-cyan shrink-0 mt-0.5">✓</div>
-              <div>
-                <h4 class="font-display font-bold text-sm theme-text-primary">Diseño Responsivo Total</h4>
-                <p class="text-xs theme-text-secondary mt-1">Adaptación perfecta en celulares, tablets y monitores de escritorio.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-3">
-              <div class="w-8 h-8 rounded-lg bg-electric/15 border border-electric/30 flex items-center justify-center theme-cyan shrink-0 mt-0.5">✓</div>
-              <div>
-                <h4 class="font-display font-bold text-sm theme-text-primary">Seguridad &amp; Buenas Prácticas</h4>
-                <p class="text-xs theme-text-secondary mt-1">Protección de rutas, cifrado de contraseñas y validación de datos.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-3">
-              <div class="w-8 h-8 rounded-lg bg-electric/15 border border-electric/30 flex items-center justify-center theme-cyan shrink-0 mt-0.5">✓</div>
-              <div>
-                <h4 class="font-display font-bold text-sm theme-text-primary">Código Documentado</h4>
-                <p class="text-xs theme-text-secondary mt-1">Estructura ordenada y fácil de escalar con nuevas funciones a futuro.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-3">
-              <div class="w-8 h-8 rounded-lg bg-electric/15 border border-electric/30 flex items-center justify-center theme-cyan shrink-0 mt-0.5">✓</div>
-              <div>
-                <h4 class="font-display font-bold text-sm theme-text-primary">Acompañamiento Cercano</h4>
-                <p class="text-xs theme-text-secondary mt-1">Capacitación de uso, despliegue asistido y soporte post-lanzamiento.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================
-         6. PROCESO DE DESARROLLO TRANSPARENTE (TIMELINE ANIMADO)
-    =========================================== -->
-    <section id="proceso" class="relative py-24 lg:py-32 theme-bg-primary border-t theme-border bg-cyber-grid">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- Encabezado -->
-        <div class="section-header text-center max-w-3xl mx-auto mb-16">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyanNeon/10 border border-cyanNeon/30 theme-cyan font-mono text-xs uppercase tracking-widest mb-4">
-            <span>// 04. CÓMO TRABAJAMOS</span>
-          </div>
-          <h2 class="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl theme-text-primary tracking-tight mb-4">
-            Proceso de Desarrollo <span class="theme-cyan">Transparente</span>
-          </h2>
-          <p class="theme-text-secondary text-base sm:text-lg">
-            Al ser un equipo cercano y ágil, tienes comunicación directa con nosotros y visibilidad real de cada avance semana a semana.
-          </p>
-        </div>
-
-        <!-- Timeline de 4 Pasos -->
-        <div class="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 tabular-nums">
-          
-          <!-- Paso 01 -->
-          <div class="timeline-step cyber-card rounded-2xl p-7 relative group">
-            <div class="flex items-center justify-between mb-6">
-              <span class="font-mono font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-electric to-cyanNeon">01</span>
-              <span class="px-2.5 py-1 rounded-md bg-electric/15 border border-electric/30 font-mono text-[11px] theme-cyan">FASE INICIAL</span>
-            </div>
-            <h3 class="font-display font-bold text-xl theme-text-primary mb-3 group-hover:text-electric dark:group-hover:text-cyanNeon transition-colors">
-              Diagnóstico &amp; Alcance Técnico
-            </h3>
-            <p class="theme-text-secondary text-sm leading-relaxed">
-              Escuchamos tu idea o necesidad, analizamos los requerimientos funcionales y definimos una propuesta clara en tiempos y presupuesto.
-            </p>
-          </div>
-
-          <!-- Paso 02 -->
-          <div class="timeline-step cyber-card rounded-2xl p-7 relative group">
-            <div class="flex items-center justify-between mb-6">
-              <span class="font-mono font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-electric to-cyanNeon">02</span>
-              <span class="px-2.5 py-1 rounded-md bg-electric/15 border border-electric/30 font-mono text-[11px] theme-cyan">UX/UI &amp; ARQ</span>
-            </div>
-            <h3 class="font-display font-bold text-xl theme-text-primary mb-3 group-hover:text-electric dark:group-hover:text-cyanNeon transition-colors">
-              Prototipado Visual &amp; Arquitectura
-            </h3>
-            <p class="theme-text-secondary text-sm leading-relaxed">
-              Diseñamos las pantallas pensando en la experiencia de usuario y estructuramos la base de datos y el backend para que todo funcione con fluidez.
-            </p>
-          </div>
-
-          <!-- Paso 03 -->
-          <div class="timeline-step cyber-card rounded-2xl p-7 relative group">
-            <div class="flex items-center justify-between mb-6">
-              <span class="font-mono font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-electric to-cyanNeon">03</span>
-              <span class="px-2.5 py-1 rounded-md bg-cyanNeon/15 border border-cyanNeon/30 font-mono text-[11px] theme-cyan">AGILE SPRINTS</span>
-            </div>
-            <h3 class="font-display font-bold text-xl theme-text-primary mb-3 group-hover:text-electric dark:group-hover:text-cyanNeon transition-colors">
-              Desarrollo Ágil por Sprints con Demostraciones Semanales
-            </h3>
-            <p class="theme-text-secondary text-sm leading-relaxed">
-              Construimos tu software de forma iterativa. Cada semana te mostramos avances reales funcionando para recibir tu retroalimentación a tiempo.
-            </p>
-          </div>
-
-          <!-- Paso 04 -->
-          <div class="timeline-step cyber-card rounded-2xl p-7 relative group">
-            <div class="flex items-center justify-between mb-6">
-              <span class="font-mono font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-electric to-cyanNeon">04</span>
-              <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 border border-emerald-500/30 font-mono text-[11px] text-emerald-500">PRODUCTION READY</span>
-            </div>
-            <h3 class="font-display font-bold text-xl theme-text-primary mb-3 group-hover:text-electric dark:group-hover:text-cyanNeon transition-colors">
-              QA, Despliegue en Producción &amp; Soporte Post-Entrega
-            </h3>
-            <p class="theme-text-secondary text-sm leading-relaxed">
-              Realizamos pruebas completas de calidad, ponemos tu sistema o app en marcha y te acompañamos con soporte técnico después de la entrega.
-            </p>
-          </div>
-
-        </div>
       </div>
     </section>
 
@@ -1202,7 +1143,7 @@
               </p>
             </div>
 
-            <!-- Tarjeta de Liderazgo: Oliver Borda -->
+            <!-- Tarjeta de Liderazgo -->
             <div class="cyber-card rounded-2xl p-6 border-l-4 border-l-cyanNeon">
               <div class="flex items-center gap-4">
                 <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-electric to-cyanNeon p-[1px] shrink-0">
@@ -1221,11 +1162,10 @@
               </p>
             </div>
 
-            <!-- Canales Directos Integrados -->
+            <!-- Canales Directos -->
             <div class="space-y-3.5">
               <p class="font-mono text-xs uppercase tracking-wider theme-text-muted">Canales de Atención Directa:</p>
 
-              <!-- WhatsApp Directo -->
               <a href="https://wa.me/573213407384?text=Hola%20Oliver%2C%20vengo%20del%20sitio%20web%20de%20TGB%20Tech%20Studio%20y%20me%20gustar%C3%ADa%20cotizar%20un%20proyecto." target="_blank" rel="noopener noreferrer" class="cyber-card rounded-xl p-4 flex items-center justify-between group hover:border-emerald-500/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">
                 <div class="flex items-center gap-3.5 min-w-0">
                   <div class="w-10 h-10 rounded-lg bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-center text-emerald-500 shrink-0">
@@ -1241,7 +1181,6 @@
                 <span class="text-xs font-mono text-emerald-500 shrink-0">En línea →</span>
               </a>
 
-              <!-- Correo Electrónico -->
               <a href="mailto:Oliverborda04@outlook.com?subject=Cotizaci%C3%B3n%20de%20Proyecto%20-%20TGB%20Tech%20Studio" class="cyber-card rounded-xl p-4 flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">
                 <div class="flex items-center gap-3.5 min-w-0">
                   <div class="w-10 h-10 rounded-lg bg-electric/15 border border-electric/40 flex items-center justify-center theme-cyan shrink-0">
@@ -1257,7 +1196,6 @@
                 <span class="text-xs font-mono theme-cyan shrink-0">Escribir →</span>
               </a>
 
-              <!-- LinkedIn -->
               <a href="https://www.linkedin.com/search/results/all/?keywords=Oliver%20Borda" target="_blank" rel="noopener noreferrer" class="cyber-card rounded-xl p-4 flex items-center justify-between group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon">
                 <div class="flex items-center gap-3.5 min-w-0">
                   <div class="w-10 h-10 rounded-lg bg-cyanNeon/15 border border-cyanNeon/40 flex items-center justify-center theme-cyan shrink-0">
@@ -1275,7 +1213,7 @@
             </div>
           </div>
 
-          <!-- Columna Derecha: Formulario de Cotización -->
+          <!-- Columna Derecha: Formulario -->
           <div class="lg:col-span-7">
             <form id="quote-form" class="cyber-card rounded-3xl p-7 sm:p-10 space-y-6">
               <div class="flex items-center justify-between border-b theme-border pb-4">
@@ -1311,12 +1249,13 @@
                   <label for="solucion" class="block font-mono text-xs uppercase tracking-wider theme-text-secondary mb-2 cursor-pointer">Tipo de Solución *</label>
                   <select id="solucion" name="solution_type" autocomplete="off" required
                     class="theme-input w-full px-4 py-3.5 rounded-xl text-sm focus-visible:outline-none focus-visible:border-cyanNeon focus-visible:ring-1 focus-visible:ring-cyanNeon transition-colors">
-                    <option value="Software Web a la Medida / SaaS">Software Web a la Medida / Sistema Interno</option>
+                    <option value="Landing Page de Alta Conversión">Landing Page de Alta Conversión</option>
+                    <option value="Sistema Web Corporativo / Dashboard">Sistema Web Corporativo / Dashboard</option>
+                    <option value="Software a la Medida / Automatización">Software a la Medida / Automatización</option>
                     <option value="Aplicación Móvil (iOS & Android)">Aplicación Móvil (iOS &amp; Android)</option>
-                    <option value="Sitio Web Profesional / Landing Page">Sitio Web Profesional / Landing Page</option>
                     <option value="E-Commerce / Punto de Venta (POS)">E-Commerce / Punto de Venta (POS)</option>
-                    <option value="Desarrollo Backend / APIs">Desarrollo Backend / Integración de APIs</option>
-                    <option value="Otro Proyecto">Otro Proyecto a la Medida</option>
+                    <option value="Desarrollo Backend / APIs">Desarrollo Backend / APIs</option>
+                    <option value="Otro Proyecto">Otro Proyecto Personalizado</option>
                   </select>
                 </div>
               </div>
@@ -1335,7 +1274,7 @@
               <div>
                 <label for="descripcion" class="block font-mono text-xs uppercase tracking-wider theme-text-secondary mb-2 cursor-pointer">Cuéntanos sobre tu idea o necesidad *</label>
                 <textarea id="descripcion" name="project_description" autocomplete="off" rows="4" required
-                  placeholder="Describe brevemente qué deseas construir, qué problema quieres resolver o qué funcionalidades necesitas…"
+                  placeholder="Describe qué deseas construir, qué problema quieres resolver o qué funcionalidades necesitas…"
                   class="theme-input w-full px-4 py-3.5 rounded-xl text-sm focus-visible:outline-none focus-visible:border-cyanNeon focus-visible:ring-1 focus-visible:ring-cyanNeon transition-colors resize-none"></textarea>
               </div>
 
@@ -1390,20 +1329,20 @@
           <ul class="space-y-2.5 text-xs">
             <li><a href="#inicio" class="hover:text-cyanNeon transition-colors">Inicio</a></li>
             <li><a href="#servicios" class="hover:text-cyanNeon transition-colors">Servicios Especializados</a></li>
+            <li><a href="#desarrollos" class="hover:text-cyanNeon transition-colors">Desarrollos que Hacemos</a></li>
             <li><a href="#nosotros" class="hover:text-cyanNeon transition-colors">Nuestro Enfoque</a></li>
             <li><a href="#tecnologias" class="hover:text-cyanNeon transition-colors">Stack Tecnológico</a></li>
-            <li><a href="#proceso" class="hover:text-cyanNeon transition-colors">Proceso de Trabajo</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 class="font-mono text-xs uppercase tracking-wider theme-text-primary mb-4">Especialidades</h4>
+          <h4 class="font-mono text-xs uppercase tracking-wider theme-text-primary mb-4">Desarrollos</h4>
           <ul class="space-y-2.5 text-xs">
-            <li>Desarrollo de Software a Medida</li>
+            <li>Landing Pages de Alta Conversión</li>
+            <li>Sistemas Corporativos &amp; Dashboards</li>
+            <li>Software a la Medida &amp; Automatización</li>
             <li>Aplicaciones Móviles (iOS &amp; Android)</li>
-            <li>Sistemas Web en React &amp; Angular</li>
-            <li>Diseño de Experiencia de Usuario (UX/UI)</li>
-            <li>APIs en Spring Boot, Laravel &amp; Node.js</li>
+            <li>Integración de Pasarelas de Pago &amp; APIs</li>
           </ul>
         </div>
 
@@ -1432,14 +1371,7 @@
   </footer>
 
   <!-- ==========================================
-       LIBRERÍAS EXTERNAS VÍA CDN
-  =========================================== -->
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-  <!-- ==========================================
-       LÓGICA PRINCIPAL: TEMA CLARO/OSCURO + UI + ANIMACIÓN
+       LÓGICA PRINCIPAL: TEMA CLARO/OSCURO + FORMULARIOS
   =========================================== -->
   <script>
     window.addEventListener('DOMContentLoaded', () => {
@@ -1456,9 +1388,6 @@
       const themeText = document.getElementById('theme-toggle-text');
       const metaThemeColor = document.getElementById('meta-theme-color');
 
-      // Referencia a materiales del nodo 3D para adaptar su opacidad en modo claro/oscuro
-      let heroMaterials = { core: null, inner: null, particles: null };
-
       const applyTheme = (mode) => {
         const isDark = mode === 'dark';
         htmlEl.classList.toggle('dark', isDark);
@@ -1469,10 +1398,6 @@
         }
         if (metaThemeColor) {
           metaThemeColor.setAttribute('content', isDark ? '#07090e' : '#f8fafc');
-        }
-        if (heroMaterials.core) {
-          heroMaterials.core.opacity = isDark ? 0.32 : 0.45;
-          heroMaterials.inner.opacity = isDark ? 0.42 : 0.55;
         }
         try {
           localStorage.setItem('tgb-theme', mode);
@@ -1531,290 +1456,56 @@
       });
 
       // --------------------------------------------------
-      // 3. NODO INTERACTIVO LATERAL EN EL HERO (NO AFECTA LA LECTURA DEL TEXTO)
+      // 3. BARRAS COMPARATIVAS EN SCROLL
       // --------------------------------------------------
-      let isHeroMotionPaused = prefersReducedMotion;
-
-      const initHeroThree = () => {
-        const canvas = document.getElementById('hero-canvas');
-        if (!canvas || typeof THREE === 'undefined') return;
-
-        const container = canvas.parentElement;
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 1000);
-        camera.position.z = 21;
-
-        const renderer = new THREE.WebGLRenderer({
-          canvas,
-          alpha: true,
-          antialias: true,
-          powerPreference: 'high-performance'
-        });
-        renderer.setSize(container.clientWidth, container.clientHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-        const mainGroup = new THREE.Group();
-        scene.add(mainGroup);
-
-        const isDarkInitial = htmlEl.classList.contains('dark');
-
-        const coreGeo = new THREE.IcosahedronGeometry(6.8, 2);
-        const coreMat = new THREE.MeshBasicMaterial({
-          color: 0x2563eb,
-          wireframe: true,
-          transparent: true,
-          opacity: isDarkInitial ? 0.32 : 0.45
-        });
-        const coreMesh = new THREE.Mesh(coreGeo, coreMat);
-        mainGroup.add(coreMesh);
-
-        const innerGeo = new THREE.OctahedronGeometry(4.3, 1);
-        const innerMat = new THREE.MeshBasicMaterial({
-          color: 0x06b6d4,
-          wireframe: true,
-          transparent: true,
-          opacity: isDarkInitial ? 0.42 : 0.55
-        });
-        const innerMesh = new THREE.Mesh(innerGeo, innerMat);
-        mainGroup.add(innerMesh);
-
-        const particlesCount = 220;
-        const positions = new Float32Array(particlesCount * 3);
-        const colors = new Float32Array(particlesCount * 3);
-
-        const colorBlue = new THREE.Color(0x2563eb);
-        const colorCyan = new THREE.Color(0x06b6d4);
-
-        for (let i = 0; i < particlesCount; i++) {
-          const i3 = i * 3;
-          positions[i3] = (Math.random() - 0.5) * 24;
-          positions[i3 + 1] = (Math.random() - 0.5) * 20;
-          positions[i3 + 2] = (Math.random() - 0.5) * 16;
-
-          const mixedColor = Math.random() > 0.45 ? colorCyan : colorBlue;
-          colors[i3] = mixedColor.r;
-          colors[i3 + 1] = mixedColor.g;
-          colors[i3 + 2] = mixedColor.b;
-        }
-
-        const particlesGeo = new THREE.BufferGeometry();
-        particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        particlesGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-        const particlesMat = new THREE.PointsMaterial({
-          size: 0.18,
-          vertexColors: true,
-          transparent: true,
-          opacity: 0.9
-        });
-
-        const particleSystem = new THREE.Points(particlesGeo, particlesMat);
-        mainGroup.add(particleSystem);
-
-        heroMaterials = { core: coreMat, inner: innerMat, particles: particlesMat };
-
-        let targetX = 0, targetY = 0, currentX = 0, currentY = 0;
-        container.addEventListener('mousemove', (e) => {
-          const rect = container.getBoundingClientRect();
-          targetX = ((e.clientX - rect.left) / rect.width - 0.5) * 1.8;
-          targetY = ((e.clientY - rect.top) / rect.height - 0.5) * 1.8;
-        }, { passive: true });
-
-        let isHeroVisible = true;
-        const observer = new IntersectionObserver((entries) => {
-          isHeroVisible = entries[0].isIntersecting;
-        }, { threshold: 0.05 });
-        observer.observe(container);
-
-        renderer.render(scene, camera);
-
-        const clock = new THREE.Clock();
-        const animateHero = () => {
-          requestAnimationFrame(animateHero);
-          if (!isHeroVisible || isHeroMotionPaused) return;
-
-          const elapsedTime = clock.getElapsedTime();
-          currentX += (targetX - currentX) * 0.06;
-          currentY += (targetY - currentY) * 0.06;
-
-          coreMesh.rotation.y = elapsedTime * 0.16 + currentX * 0.7;
-          coreMesh.rotation.x = elapsedTime * 0.1 + currentY * 0.7;
-
-          innerMesh.rotation.y = -elapsedTime * 0.24 + currentX * 0.9;
-          innerMesh.rotation.z = elapsedTime * 0.15;
-
-          particleSystem.rotation.y = elapsedTime * 0.05 + currentX * 0.35;
-          particleSystem.rotation.x = currentY * 0.3;
-
-          renderer.render(scene, camera);
-        };
-        animateHero();
-
-        window.addEventListener('resize', () => {
-          if (!container) return;
-          camera.aspect = container.clientWidth / container.clientHeight;
-          camera.updateProjectionMatrix();
-          renderer.setSize(container.clientWidth, container.clientHeight);
-          renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-          renderer.render(scene, camera);
-        }, { passive: true });
-      };
-
-      const toggleMotionBtn = document.getElementById('toggle-hero-motion');
-      if (toggleMotionBtn) {
-        toggleMotionBtn.addEventListener('click', () => {
-          isHeroMotionPaused = !isHeroMotionPaused;
-          toggleMotionBtn.textContent = isHeroMotionPaused ? 'Reanudar giro' : 'Pausar giro';
-        });
-      }
-
-      initHeroThree();
-
-      // --------------------------------------------------
-      // 4. SIMULADOR INTERACTIVO DE SOLUCIONES (SAAS / MOBILE / BACKEND)
-      // --------------------------------------------------
-      const previewTabs = document.querySelectorAll('.preview-tab');
-      const previewFilename = document.getElementById('preview-filename');
-      const panes = {
-        saas: document.getElementById('preview-saas'),
-        mobile: document.getElementById('preview-mobile'),
-        backend: document.getElementById('preview-backend')
-      };
-
-      previewTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          const targetKey = tab.getAttribute('data-preview');
-          const fileLabel = tab.getAttribute('data-file');
-
-          previewTabs.forEach(t => {
-            t.setAttribute('aria-selected', 'false');
-            t.className = 'preview-tab px-3 py-2.5 rounded-xl font-mono text-xs font-medium theme-bg-secondary theme-text-secondary border theme-border hover:border-cyanNeon/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon';
-          });
-          tab.setAttribute('aria-selected', 'true');
-          tab.className = 'preview-tab px-3 py-2.5 rounded-xl font-mono text-xs font-medium bg-electric text-white border border-blue-400/40 shadow-glow-blue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon';
-
-          if (previewFilename && fileLabel) {
-            previewFilename.textContent = fileLabel;
+      const barTgb = document.getElementById('bar-tgb');
+      const barStatic = document.getElementById('bar-static');
+      if (barTgb && barStatic) {
+        const obs = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting) {
+            barTgb.style.transition = 'width 1.2s cubic-bezier(0.22, 1, 0.36, 1)';
+            barStatic.style.transition = 'width 1s cubic-bezier(0.22, 1, 0.36, 1)';
+            barTgb.style.width = barTgb.dataset.width;
+            barStatic.style.width = barStatic.dataset.width;
+            obs.disconnect();
           }
-
-          Object.keys(panes).forEach(key => {
-            if (!panes[key]) return;
-            if (key === targetKey) {
-              panes[key].classList.remove('hidden');
-              if (!prefersReducedMotion && typeof gsap !== 'undefined') {
-                gsap.fromTo(panes[key], { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
-              }
-            } else {
-              panes[key].classList.add('hidden');
-            }
-          });
-        });
-      });
-
-      // --------------------------------------------------
-      // 5. ANIMACIONES DE ENTRADA AL HACER SCROLL
-      // --------------------------------------------------
-      if (!prefersReducedMotion && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-
-        gsap.from('.hero-anim', {
-          y: 32, opacity: 0, duration: 0.9, stagger: 0.12, ease: 'power3.out', delay: 0.1
-        });
-
-        gsap.utils.toArray('.section-header').forEach(header => {
-          gsap.from(header, {
-            scrollTrigger: { trigger: header, start: 'top 85%', toggleActions: 'play none none none' },
-            y: 35, opacity: 0, duration: 0.8, ease: 'power3.out'
-          });
-        });
-
-        gsap.from('.service-card', {
-          scrollTrigger: { trigger: '#servicios', start: 'top 78%' },
-          y: 45, opacity: 0, duration: 0.75, stagger: 0.12, ease: 'power3.out'
-        });
-
-        ScrollTrigger.create({
-          trigger: '#nosotros',
-          start: 'top 75%',
-          onEnter: () => {
-            const barTgb = document.getElementById('bar-tgb');
-            const barStatic = document.getElementById('bar-static');
-            if (barTgb && barStatic) {
-              gsap.to(barTgb, { width: barTgb.dataset.width, duration: 1.4, ease: 'power3.out' });
-              gsap.to(barStatic, { width: barStatic.dataset.width, duration: 1.2, ease: 'power3.out' });
-            }
-          }
-        });
-
-        gsap.from('.stack-layer', {
-          scrollTrigger: { trigger: '#tecnologias', start: 'top 78%' },
-          y: 40, opacity: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out'
-        });
-
-        gsap.from('.timeline-step', {
-          scrollTrigger: { trigger: '#proceso', start: 'top 78%' },
-          y: 40, opacity: 0, duration: 0.75, stagger: 0.15, ease: 'power3.out'
-        });
-      } else {
-        const barTgb = document.getElementById('bar-tgb');
-        const barStatic = document.getElementById('bar-static');
-        if (barTgb && barStatic) {
-          barTgb.style.width = barTgb.dataset.width;
-          barStatic.style.width = barStatic.dataset.width;
-        }
+        }, { threshold: 0.3 });
+        obs.observe(document.getElementById('nosotros'));
       }
 
       // --------------------------------------------------
-      // 6. FILTRADO INTERACTIVO DEL STACK TECNOLÓGICO (4 ÁREAS)
+      // 4. FILTRADO INTERACTIVO DEL STACK TECNOLÓGICO
       // --------------------------------------------------
       const stackTabs = document.querySelectorAll('.stack-tab');
       const stackLayers = document.querySelectorAll('.stack-layer');
 
-      const applyStackFilter = (filter, updateUrl = false) => {
+      const applyStackFilter = (filter) => {
         stackTabs.forEach(t => {
           const isMatch = t.getAttribute('data-filter') === filter;
           t.setAttribute('aria-selected', String(isMatch));
           t.className = isMatch
-            ? 'stack-tab px-5 py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider bg-electric text-white border border-blue-400/40 shadow-glow-blue transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon'
-            : 'stack-tab px-5 py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider theme-bg-primary theme-text-secondary border theme-border hover:border-cyanNeon/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyanNeon';
+            ? 'stack-tab px-5 py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider bg-electric text-white border border-blue-400/40 shadow-glow-blue transition-colors focus-visible:outline-none'
+            : 'stack-tab px-5 py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider theme-bg-secondary theme-text-secondary border theme-border hover:border-cyanNeon/50 transition-colors focus-visible:outline-none';
         });
 
         stackLayers.forEach(layer => {
           const cat = layer.getAttribute('data-category');
           if (filter === 'all' || filter === cat) {
             layer.style.display = 'flex';
-            if (!prefersReducedMotion && typeof gsap !== 'undefined') {
-              gsap.fromTo(layer, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' });
-            }
           } else {
             layer.style.display = 'none';
           }
         });
-
-        if (updateUrl && window.history.replaceState) {
-          const url = new URL(window.location);
-          if (filter === 'all') {
-            url.searchParams.delete('stack');
-          } else {
-            url.searchParams.set('stack', filter);
-          }
-          window.history.replaceState({}, '', url);
-        }
       };
 
       stackTabs.forEach(tab => {
         tab.addEventListener('click', () => {
-          applyStackFilter(tab.getAttribute('data-filter'), true);
+          applyStackFilter(tab.getAttribute('data-filter'));
         });
       });
 
-      const initialStackParam = new URLSearchParams(window.location.search).get('stack');
-      if (initialStackParam && ['frontend', 'mobile', 'backend', 'data'].includes(initialStackParam)) {
-        applyStackFilter(initialStackParam, false);
-      }
-
       // --------------------------------------------------
-      // 7. GESTIÓN DEL FORMULARIO DE COTIZACIÓN (WHATSAPP & EMAIL)
+      // 5. GESTIÓN DEL FORMULARIO DE COTIZACIÓN (WHATSAPP & EMAIL)
       // --------------------------------------------------
       const quoteForm = document.getElementById('quote-form');
       const sendEmailBtn = document.getElementById('send-email-btn');
@@ -1848,9 +1539,6 @@
 
         feedbackBox.textContent = '✓ Solicitud estructurada correctamente. Abriendo canal directo con Oliver Borda…';
         feedbackBox.classList.remove('hidden');
-        if (!prefersReducedMotion && typeof gsap !== 'undefined') {
-          gsap.fromTo(feedbackBox, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.35 });
-        }
 
         window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
       });
